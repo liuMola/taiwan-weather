@@ -11,8 +11,13 @@ module.exports = {
 				'dark-theme': '#2B2F36',
 			},
 			boxShadow: {
-				'd-out': '  19px 19px 37px #15171a, -19px -19px 37px #414752',
-				'd-in': 'inset 19px 19px 37px #15171a, inset -19px -19px 37px #414752',
+				'd-out': '3px 3px 6px #1e2126, -3px -3px 6px #383d46',
+				'd-in': 'inset 3px 3px 6px #1e2126, inset -3px -3px 6px #383d46',
+				'b-out': '3px 3px 6px #b3b3b6, -3px -3px 6px #ffffff',
+				'b-in': 'inset 3px 3px 6px #a2a3a6, inset -3px -3px 6px #ffffff',
+			},
+			fontFamily: {
+				roboto: '"Roboto", sans-serif',
 			},
 		},
 	},
