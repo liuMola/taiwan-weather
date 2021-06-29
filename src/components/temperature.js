@@ -1,7 +1,13 @@
 import React from 'react';
+//Components
 import { ReactComponent as DayCloudyIcon } from '../images/day-cloudy.svg';
+//store
+import useStore from '../store/store';
 
 export default function Temperature() {
+	const temperature = useStore((state) => state.weatherData.temperature);
+	const description = useStore((state) => state.weatherData.description);
+
 	return (
 		<>
 			<div className='my-4'>
@@ -10,11 +16,11 @@ export default function Temperature() {
 						<DayCloudyIcon />
 					</div>
 					<div className='relative font-normal text-[42px] flex transform translate-x-2'>
-						<span className='text-[80px]'>32</span>
+						<span className='text-[80px]'>{temperature}</span>
 						<span className='relative text-[40px] self-start top-2 block'>°</span>
 					</div>
 					<div>
-						<span>Cloudy</span>
+						<span>{description}</span>
 					</div>
 				</div>
 			</div>
