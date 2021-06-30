@@ -16,7 +16,7 @@ export default function Temperature() {
 						<DayCloudyIcon />
 					</div>
 					<div className='relative font-normal text-[42px] flex transform translate-x-2'>
-						<span className='text-[80px]'>{temperature}</span>
+						<span className='text-[80px]'>{Math.round(temperature)}</span>
 						<span className='relative text-[40px] self-start top-2 block'>°</span>
 					</div>
 					<div>

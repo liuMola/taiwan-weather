@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import dayjs from 'dayjs';
 //components
 import Button from './button';
-import { ReactComponent as refreshIcon } from '../images/refresh.svg';
+import { ReactComponent as RefreshIcon } from '../images/refresh.svg';
 //store
 import useStore from '../store/store';
 //Lottie
@@ -33,7 +33,7 @@ export default function Footer() {
 			</div>
 			<div className='flex items-center'>
 				<div className='flex flex-col font-light mr-2'>
-					<span>Last Observation</span>
+					<span>Last Obser.</span>
 					<span>
 						{new Intl.DateTimeFormat('en-US', {
 							hour: 'numeric',
@@ -50,7 +50,7 @@ export default function Footer() {
 							animationData={darkOrBright()}
 						/>
 					) : (
-						<refreshIcon />
+						<RefreshIcon />
 					)}
 				</Button>
 			</div>
