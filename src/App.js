@@ -12,6 +12,7 @@ import useStore from './store/store';
 function App() {
 	const [dark, setDark] = useState(false);
 	const setWeatherData = useStore((state) => state.setWeatherData);
+	const setIndexData = useStore((state) => state.setIndexData);
 
 	const baseURL = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/';
 
@@ -33,9 +34,8 @@ function App() {
 			const data = await res.json();
 			return data;
 		};
-		// weatherData().then((data) => setWeatherData(data));
+		weatherData().then((data) => setIndexData(data));
 		weatherData().then((data) => console.log(data));
-		console.log('222');
 	}, []);
 
 	useEffect(() => {

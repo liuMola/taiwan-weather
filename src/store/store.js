@@ -30,8 +30,8 @@ const useStore = create((set) => ({
 		set((state) => ({
 			indexData: {
 				locationName: '臺北市',
-				description: 'Cloudy',
-				pop: 33,
+				description: data.records.location[0].weatherElement[0].time[0].parameter.parameterName,
+				pop: data.records.location[0].weatherElement[1].time[0].parameter.parameterName,
 			},
 		})),
 }));

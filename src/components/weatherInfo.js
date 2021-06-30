@@ -15,7 +15,7 @@ import useStore from '../store/store';
 const index = {
 	wind: ['Wind velocity', 'm/s'],
 	uv: ['UV Index', ''],
-	pop: ['Probability of \nPrecipitation', '%'],
+	pop: ['Probability of Precipitation', '%'],
 	sth: ['something', '%'],
 };
 
@@ -26,8 +26,8 @@ export default function WeatherInfo() {
 	const rainDarkOrBright = () => (mode.classList.contains('dark') ? rainDarkData : rainBrightData);
 
 	const windSpeed = useStore((state) => state.weatherData.windSpeed);
-	const temperature = useStore((state) => state.weatherData.temperature);
 	const uvIndex = useStore((state) => state.weatherData.uvIndex);
+	const pop = useStore((state) => state.indexData.pop);
 
 	return (
 		<div className='grid grid-cols-2 grid-rows-2 gap-6 mt-10'>
@@ -37,7 +37,7 @@ export default function WeatherInfo() {
 			<Status status={uvIndex} category={index.uv[0]} unit={index.uv[1]}>
 				<Lottie className='w-8/12' animationData={sunDarkOrBright()} />
 			</Status>
-			<Status status={uvIndex} category={index.pop[0]} unit={index.pop[1]}>
+			<Status status={pop} category={index.pop[0]} unit={index.pop[1]}>
 				<Lottie className='w-7/12' animationData={rainDarkOrBright()} />
 			</Status>
 			<Status category={index.sth[0]} unit={index.sth[1]}>
