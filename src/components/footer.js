@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import dayjs from 'dayjs';
 //components
-import Button from './button';
+import Button from './Button';
 import { ReactComponent as RefreshIcon } from '../images/refresh.svg';
 //store
 import useStore from '../store/store';
@@ -10,10 +10,12 @@ import Lottie from 'lottie-react';
 import refreshBrightData from '../lottie/refresh-for-bright.json';
 import refreshDarkData from '../lottie/refresh-for-dark.json';
 
+import { fetchWeatherForecast, fetchCurrentWeather } from '../apis/fetchData';
+
 export default function Footer() {
 	const lottieRef = useRef(null);
-	const time = useStore((state) => state.currentWeatherData.observationTime);
-	const loading = useStore((state) => state.currentWeatherData.isLoading);
+	const time = useStore((state) => state.weatherData.observationTime);
+	const loading = useStore((state) => state.weatherData.isLoading);
 
 	let mode = document.getElementsByTagName('html')[0];
 	const darkOrBright = () => (mode.classList.contains('dark') ? refreshDarkData : refreshBrightData);
@@ -43,12 +45,7 @@ export default function Footer() {
 				</div>
 				<Button>
 					{loading ? (
-						<Lottie
-							onClick={playRefresh}
-							className='w-7/12'
-							lottieRef={lottieRef}
-							animationData={darkOrBright()}
-						/>
+						<Lottie className='w-7/12' lottieRef={lottieRef} animationData={darkOrBright()} />
 					) : (
 						<RefreshIcon />
 					)}

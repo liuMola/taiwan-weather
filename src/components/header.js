@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './button';
+import Button from './Button';
 //Lottie
 import Lottie from 'lottie-react';
 import settingBrightData from '../lottie/setting-for-bright.json';

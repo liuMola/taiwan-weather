@@ -2,38 +2,28 @@
 import create from 'zustand';
 
 const useStore = create((set) => ({
-	//including windspeed, temperature, UV index, and observation time
-	currentWeatherData: {
+	weatherData: {
+		locationName: '臺北市',
+		description: 'Cloudy',
+		pop: 33,
 		windSpeed: 1.1,
 		temperature: 32,
 		uvIndex: 3,
 		humidity: 10,
 		observationTime: '2020-01-22 22:02:10',
 	},
-	//including POP, description, and city name
-	forecastData: {
-		locationName: '臺北市',
-		description: 'Cloudy',
-		pop: 33,
-	},
 
-	setCurrentWeatherData: (data) =>
+	setWeatherData: (data) =>
 		set((state) => ({
-			currentWeatherData: {
-				windSpeed: data.WDSD,
-				temperature: data.TEMP,
-				uvIndex: data.H_UVI,
-				humidity: data.HUMD,
-				observationTime: data.obsTime,
-			},
-		})),
-
-	setForecastData: (data) =>
-		set((state) => ({
-			forecastData: {
+			weatherData: {
 				locationName: '臺北市',
-				description: data.Wx.parameterName,
-				pop: data.PoP.parameterName,
+				description: data[1].Wx.parameterName,
+				pop: data[1].PoP.parameterName,
+				windSpeed: data[0].WDSD,
+				temperature: data[0].TEMP,
+				uvIndex: data[0].H_UVI,
+				humidity: data[0].HUMD,
+				observationTime: data[0].obsTime,
 			},
 		})),
 }));

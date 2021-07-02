@@ -1,6 +1,6 @@
 import React from 'react';
 //components
-import Status from './status';
+import Status from './Status';
 //lottie
 import Lottie from 'lottie-react';
 import windBrightData from '../lottie/wind-for-bright.json';
@@ -28,10 +28,10 @@ export default function WeatherInfo() {
 	const rainDarkOrBright = () => (mode.classList.contains('dark') ? rainDarkData : rainBrightData);
 	const humdDarkOrBright = () => (mode.classList.contains('dark') ? humdDarkData : humdBrightData);
 
-	const windSpeed = useStore((state) => state.currentWeatherData.windSpeed);
-	const uvIndex = useStore((state) => state.currentWeatherData.uvIndex);
-	const pop = useStore((state) => state.forecastData.pop);
-	const humd = useStore((state) => state.currentWeatherData.humidity);
+	const windSpeed = useStore((state) => state.weatherData.windSpeed);
+	const uvIndex = useStore((state) => state.weatherData.uvIndex);
+	const pop = useStore((state) => state.weatherData.pop);
+	const humd = useStore((state) => state.weatherData.humidity);
 
 	return (
 		<div className='grid grid-cols-2 grid-rows-2 gap-6 mt-8'>
