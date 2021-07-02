@@ -12,8 +12,8 @@ import refreshDarkData from '../lottie/refresh-for-dark.json';
 
 export default function Footer() {
 	const lottieRef = useRef(null);
-	const time = useStore((state) => state.weatherData.observationTime);
-	const loading = useStore((state) => state.weatherData.isLoading);
+	const time = useStore((state) => state.currentWeatherData.observationTime);
+	const loading = useStore((state) => state.currentWeatherData.isLoading);
 
 	let mode = document.getElementsByTagName('html')[0];
 	const darkOrBright = () => (mode.classList.contains('dark') ? refreshDarkData : refreshBrightData);
@@ -24,7 +24,7 @@ export default function Footer() {
 
 	return (
 		<div className='flex items-center justify-between w-full text-[8px] pt-1'>
-			<div className='font-thin  tracking-wide'>
+			<div className='font-thin tracking-wide'>
 				<span>
 					Taiwan <br />
 					Weather <br />

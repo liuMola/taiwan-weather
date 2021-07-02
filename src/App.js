@@ -11,31 +11,55 @@ import useStore from './store/store';
 
 function App() {
 	const [dark, setDark] = useState(false);
-	const setWeatherData = useStore((state) => state.setWeatherData);
-	const setIndexData = useStore((state) => state.setIndexData);
-
+	const setCurrentWeatherData = useStore((state) => state.setCurrentWeatherData);
+	const setForecastData = useStore((state) => state.setForecastData);
 	const baseURL = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/';
 
-	useEffect(() => {
-		let indexURL = baseURL + `O-A0003-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北`;
-		const weatherIndexData = async () => {
-			const res = await fetch(indexURL);
+	//data fetching function
+	const fetchCurrentWeather = () => {
+		let url = baseURL + `O-A0003-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北`;
+		const currentWeatherData = async () => {
+			const res = await fetch(url);
 			const data = await res.json();
 			return data;
 		};
-		weatherIndexData().then((data) => setWeatherData(data));
-		weatherIndexData().then((data) => console.log(data.records));
-	}, []);
+		currentWeatherData().then((data) => setCurrentWeatherData(data));
+		currentWeatherData().then((data) => {
+			const weatherData = data.records.location[0].weatherElement.reduce((acc, item) => {
+				if (['WDSD', 'TEMP', 'HUMD', 'H_UVI'].includes(item.elementName)) {
+					acc[item.elementName] = item.elementValue;
+				}
 
-	useEffect(() => {
-		let weatherURL = baseURL + `F-C0032-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北市`;
-		const weatherData = async () => {
-			const res = await fetch(weatherURL);
+				return acc;
+			}, {});
+			let obsTime = data.records.location[0].time.obsTime;
+			const weatherDataTime = { ...weatherData, obsTime };
+			setCurrentWeatherData(weatherDataTime);
+		});
+	};
+
+	const fetchWeatherForecast = () => {
+		let url = baseURL + `F-C0032-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北市`;
+		const weatherForecastData = async () => {
+			const res = await fetch(url);
 			const data = await res.json();
 			return data;
 		};
-		weatherData().then((data) => setIndexData(data));
-		weatherData().then((data) => console.log(data));
+		// weatherForecastData().then((data) => setForecastData(data));
+		weatherForecastData().then((data) => {
+			const forecastData = data.records.location[0].weatherElement.reduce((acc, item) => {
+				if (['Wx', 'PoP'].includes(item.elementName)) {
+					acc[item.elementName] = item.time[0].parameter;
+				}
+				return acc;
+			}, {});
+			setForecastData(forecastData);
+		});
+	};
+	//call data fetching function
+	useEffect(() => {
+		fetchCurrentWeather();
+		fetchWeatherForecast();
 	}, []);
 
 	useEffect(() => {

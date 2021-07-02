@@ -5,8 +5,8 @@ import { ReactComponent as DayCloudyIcon } from '../images/day-cloudy.svg';
 import useStore from '../store/store';
 
 export default function Temperature() {
-	const temperature = useStore((state) => state.weatherData.temperature);
-	const description = useStore((state) => state.indexData.description);
+	const temperature = useStore((state) => state.currentWeatherData.temperature);
+	const description = useStore((state) => state.forecastData.description);
 
 	return (
 		<>

@@ -15,8 +15,8 @@ import useStore from '../store/store';
 const index = {
 	wind: ['Wind velocity', 'm/s'],
 	uv: ['UV Index', ''],
-	pop: ['Probability of Precipitation', '%'],
-	sth: ['something', '%'],
+	pop: [`Probability of \nPrecipitation`, '%'],
+	humd: ['Humidity', '%'],
 };
 
 export default function WeatherInfo() {
@@ -25,12 +25,12 @@ export default function WeatherInfo() {
 	const sunDarkOrBright = () => (mode.classList.contains('dark') ? sunDarkData : sunBrightData);
 	const rainDarkOrBright = () => (mode.classList.contains('dark') ? rainDarkData : rainBrightData);
 
-	const windSpeed = useStore((state) => state.weatherData.windSpeed);
-	const uvIndex = useStore((state) => state.weatherData.uvIndex);
-	const pop = useStore((state) => state.indexData.pop);
+	const windSpeed = useStore((state) => state.currentWeatherData.windSpeed);
+	const uvIndex = useStore((state) => state.currentWeatherData.uvIndex);
+	const pop = useStore((state) => state.forecastData.pop);
 
 	return (
-		<div className='grid grid-cols-2 grid-rows-2 gap-6 mt-10'>
+		<div className='grid grid-cols-2 grid-rows-2 gap-6 mt-8'>
 			<Status status={Math.round(windSpeed)} category={index.wind[0]} unit={index.wind[1]}>
 				<Lottie className='w-7/12' animationData={windDarkOrBright()} />
 			</Status>
@@ -40,7 +40,7 @@ export default function WeatherInfo() {
 			<Status status={pop} category={index.pop[0]} unit={index.pop[1]}>
 				<Lottie className='w-7/12' animationData={rainDarkOrBright()} />
 			</Status>
-			<Status category={index.sth[0]} unit={index.sth[1]}>
+			<Status category={index.humd[0]} unit={index.humd[1]}>
 				<Lottie className='w-7/12' animationData={windDarkOrBright()} />
 			</Status>
 		</div>
