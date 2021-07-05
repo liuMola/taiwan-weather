@@ -1,6 +1,0 @@
-const keys = {
-	AUTHORIZATION_KEY: 'CWB-C352AC23-26CB-4CB5-9E21-BE5F8D11AAEC',
-	GOOGLEGEO_KEY: 'AIzaSyAxW4jUBDLqsTwxpiR7XGBm8sEtxuKyqrU',
-};
-
-export default keys;
