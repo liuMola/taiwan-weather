@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 import useStore from './store/store';
 
 import { fetchWeatherForecast, fetchCurrentWeather } from './apis/fetchData';
-import { fetchGeoData } from './apis/getGeoData';
 
 function App() {
 	const [dark, setDark] = useState(false);
