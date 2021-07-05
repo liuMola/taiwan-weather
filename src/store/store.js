@@ -11,6 +11,7 @@ const useStore = create((set) => ({
 		uvIndex: 3,
 		humidity: 10,
 		observationTime: '2020-01-22 22:02:10',
+		isLoading: false,
 	},
 
 	setWeatherData: (data) =>
@@ -24,6 +25,7 @@ const useStore = create((set) => ({
 				uvIndex: data[0].H_UVI,
 				humidity: data[0].HUMD,
 				observationTime: data[0].obsTime,
+				isLoading: true,
 			},
 		})),
 }));
