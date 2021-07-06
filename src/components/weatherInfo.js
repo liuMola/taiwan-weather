@@ -1,6 +1,5 @@
 import React from 'react';
 //components
-import Status from './Status';
 //lottie
 import Lottie from 'lottie-react';
 import windBrightData from '../lottie/wind-for-bright.json';
@@ -34,19 +33,33 @@ export default function WeatherInfo() {
 	const humd = useStore((state) => state.weatherData.humidity);
 
 	return (
-		<div className='grid grid-cols-2 grid-rows-2 gap-6 mt-8'>
-			<Status status={Math.round(windSpeed)} category={index.wind[0]} unit={index.wind[1]}>
-				<Lottie className='w-7/12' animationData={windDarkOrBright()} />
-			</Status>
-			<Status status={uvIndex} category={index.uv[0]} unit={index.uv[1]}>
-				<Lottie className='w-8/12' animationData={sunDarkOrBright()} />
-			</Status>
-			<Status status={pop} category={index.pop[0]} unit={index.pop[1]}>
-				<Lottie className='w-7/12' animationData={rainDarkOrBright()} />
-			</Status>
-			<Status status={humd * 100} category={index.humd[0]} unit={index.humd[1]}>
-				<Lottie className='w-7/12' animationData={humdDarkOrBright()} />
-			</Status>
+		<div className='relative w-full px-2'>
+			<div className='relatvie w-full flex items-center justify-around'>
+				<div className='flex flex-col justify-center items-center'>
+					<Lottie className='w-6' animationData={windDarkOrBright()} />
+					<div className='font-light text-[15px] mt-1'>
+						<span>23</span>
+						<span className='text-[10px]'>&nbsp;m/s</span>
+					</div>
+					<div className='font-thin text-[8px]'>Wind velocity</div>
+				</div>
+				<div className='flex flex-col justify-center items-center'>
+					<Lottie className='w-6' animationData={rainDarkOrBright()} />
+					<div className='font-light text-[15px] mt-1'>
+						<span>15</span>
+						<span className='text-[10px]'>&nbsp;%</span>
+					</div>
+					<div className='font-thin text-[8px]'>Rain Chance</div>
+				</div>
+				<div className='flex flex-col justify-center items-center'>
+					<Lottie className='w-6 transform -translate-x-1' animationData={humdDarkOrBright()} />
+					<div className='font-light text-[15px] mt-1'>
+						<span>68</span>
+						<span className='text-[10px]'>&nbsp;%</span>
+					</div>
+					<div className='font-thin text-[8px]'>Humidity</div>
+				</div>
+			</div>
 		</div>
 	);
 }

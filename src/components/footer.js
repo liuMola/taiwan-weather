@@ -43,13 +43,9 @@ export default function Footer() {
 						}).format(dayjs(time))}{' '}
 					</span>
 				</div>
-				<Button>
-					{loading ? (
-						<Lottie className='w-7/12' lottieRef={lottieRef} animationData={darkOrBright()} />
-					) : (
-						<RefreshIcon />
-					)}
-				</Button>
+				<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer'>
+					<Lottie className='w-6/12' animationData={darkOrBright()} />
+				</div>
 			</div>
 		</div>
 	);

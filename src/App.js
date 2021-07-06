@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
+import MainInfo from './components/MainInfo';
 import DarkorBright from './darkorBright';
 import Header from './components/Header';
-import Temperature from './components/Temperature';
-import WeatherInfo from './components/WeatherInfo';
+import WeekForecast from './components/WeekForecast';
+
 import Footer from './components/Footer';
 //store
 import useStore from './store/store';
@@ -29,12 +30,11 @@ function App() {
 
 	return (
 		<>
-			<div className='bg-[#ffffff] h-full flex items-center justify-center text-dark dark:text-bright font-roboto'>
-				<div className='weather-card relative min-w-[355px] bg-bright-theme dark:bg-dark-theme pt-3 pb-5 px-8 rounded-xl'>
+			<div className='bg-background-img h-full flex items-center justify-center text-dark font-roboto'>
+				<div className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-6 rounded-3xl backdrop-blur'>
 					<Header />
-					<DarkorBright dark={dark} setDark={setDark} />
-					<Temperature />
-					<WeatherInfo />
+					<MainInfo />
+					<WeekForecast />
 					<div className='w-full bg-dark dark:bg-bright opacity-20 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
