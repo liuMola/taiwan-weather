@@ -5,6 +5,9 @@ import useWeatherStore from '../store/weatherStore';
 
 export default function FiveDayForecast() {
 	const descriptionCode = useWeatherStore((state) => state.weatherData.weekForecastCode);
+	const temp = useWeatherStore((state) => state.weatherData.weekForecastTemp);
+	console.log(descriptionCode);
+	console.log(temp);
 	const getDate = () => {
 		const date = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
 		let today = new Date().getDay();
@@ -22,11 +25,11 @@ export default function FiveDayForecast() {
 				<span>Week forecast</span>
 			</div>
 			<div className='flex justify-between'>
-				<DayForcestCard date={date[0]} descriptionCode={descriptionCode[0]} />
-				<DayForcestCard date={date[1]} descriptionCode={descriptionCode[1]} />
-				<DayForcestCard date={date[2]} descriptionCode={descriptionCode[2]} />
-				<DayForcestCard date={date[3]} descriptionCode={descriptionCode[3]} />
-				<DayForcestCard date={date[4]} descriptionCode={descriptionCode[4]} />
+				<DayForcestCard date={date[0]} descriptionCode={descriptionCode[0]} temp={temp[0]} />
+				<DayForcestCard date={date[1]} descriptionCode={descriptionCode[1]} temp={temp[1]} />
+				<DayForcestCard date={date[2]} descriptionCode={descriptionCode[2]} temp={temp[2]} />
+				<DayForcestCard date={date[3]} descriptionCode={descriptionCode[3]} temp={temp[3]} />
+				<DayForcestCard date={date[4]} descriptionCode={descriptionCode[4]} temp={temp[4]} />
 			</div>
 		</div>
 	);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import MainInfo from './components/MainInfo';
 import Header from './components/Header';
@@ -27,7 +27,7 @@ function App() {
 					<Header />
 					<MainInfo />
 					<WeekForecast />
-					<div className='w-full bg-bright opacity-20 h-px mt-6 mb-4'></div>
+					<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
 			</div>

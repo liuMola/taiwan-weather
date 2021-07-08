@@ -1,4 +1,6 @@
 import React from 'react';
+
+import DescriptionCode from './DescriptionCode';
 //store
 import useWeatherStore from '../store/weatherStore';
 
@@ -20,7 +22,9 @@ export default function Temperature() {
 							<span className='relative text-[40px] self-start top-2 block'>°</span>
 						</div>
 						<div className='flex items-center'>
-							<span>Cloudy</span>
+							<span>
+								<DescriptionCode desCode={descriptionCode} />
+							</span>
 							<div className='flex ml-2 text-sm font-thin'>
 								<div className='font-light'>{Math.round(highTemp)}</div>
 								<div className='font-light'>°</div>

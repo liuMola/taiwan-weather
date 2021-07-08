@@ -10,16 +10,8 @@ import humdDarkData from '../lottie/humd-for-dark.json';
 //store
 import useWeatherStore from '../store/weatherStore';
 
-const index = {
-	wind: ['Wind velocity', 'm/s'],
-	uv: ['UV Index', ''],
-	pop: [`Probability of \nPrecipitation`, '%'],
-	humd: ['Humidity', '%'],
-};
-
 export default function WeatherInfo() {
 	const windSpeed = useWeatherStore((state) => state.weatherData.windSpeed);
-	const uvIndex = useWeatherStore((state) => state.weatherData.uvIndex);
 	const pop = useWeatherStore((state) => state.weatherData.pop);
 	const humd = useWeatherStore((state) => state.weatherData.humidity);
 
@@ -43,7 +35,7 @@ export default function WeatherInfo() {
 					<div className='font-thin text-[8px]'>Rain Chance</div>
 				</div>
 				<div className='flex flex-col justify-center items-center'>
-					<Lottie className='w-6 -translate-x-1' animationData={humdDarkData} />
+					<Lottie className='w-6 -translate-x-px' animationData={humdDarkData} />
 					<div className='font-light text-[15px] mt-1 translate-x-[2px]'>
 						<span>{humd * 100}</span>
 						<span className='text-[10px]'>&nbsp;%</span>

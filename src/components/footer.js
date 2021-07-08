@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import dayjs from 'dayjs';
 //components
-import Button from './Button';
 import { ReactComponent as RefreshIcon } from '../images/refresh.svg';
 //store
 import useWeatherStore from '../store/weatherStore';
@@ -9,8 +8,6 @@ import useWeatherStore from '../store/weatherStore';
 import Lottie from 'lottie-react';
 import refreshBrightData from '../lottie/refresh-for-bright.json';
 import refreshDarkData from '../lottie/refresh-for-dark.json';
-
-import { fetchWeatherForecast, fetchCurrentWeather } from '../apis/fetchData';
 
 export default function Footer() {
 	const lottieRef = useRef(null);
@@ -25,7 +22,7 @@ export default function Footer() {
 	};
 
 	return (
-		<div className='flex items-center justify-between w-full text-[8px] pt-1'>
+		<div className='flex items-center justify-between w-full text-[8px] pt-1 text-bright'>
 			<div className='font-thin tracking-wide'>
 				<span>
 					Taiwan <br />

@@ -48,27 +48,33 @@ const fetchWeekForecast = () => {
 		`F-D0047-091?
 Authorization=${key.AUTHORIZATION_KEY}&
 locationName=${location}&
-elementName=Wx&timeFrom=${initialDate}T00%3A00%3A00&timeTo=${endDate}T24%3A00%3A00`;
+elementName=T,Wx&timeFrom=${initialDate}T00%3A00%3A00&timeTo=${endDate}T24%3A00%3A00`;
 	const weekForecastData = async () => {
 		const res = await fetch(url);
 		const data = await res.json();
 		return data;
 	};
-
 	return weekForecastData().then((data) => {
-		let result = Object.values(data.records.locations[0].location[0].weatherElement[0].time);
-		const newResult = [];
-		const value = [];
-		let iteration = result.keys();
-		for (const iter of iteration) {
+		let temp = Object.values(data.records.locations[0].location[0].weatherElement[0].time);
+		let wx = Object.values(data.records.locations[0].location[0].weatherElement[1].time);
+		const tempFilter = [];
+		const wxFilter = [];
+		const tempResult = [];
+		const wxResult = [];
+		// let iteration = temp.keys();
+		for (const iter of temp.keys()) {
 			if (iter % 2 === 0) {
-				newResult.push(result[iter]);
+				tempFilter.push(temp[iter]);
+				wxFilter.push(wx[iter]);
 			}
 		}
-		for (const i of newResult) {
-			value.push(i.elementValue[1].value);
+		for (const i of tempFilter) {
+			tempResult.push(i.elementValue[0].value);
 		}
-		return value;
+		for (const i of wxFilter) {
+			wxResult.push(i.elementValue[1].value);
+		}
+		return [tempResult, wxResult];
 	});
 };
 
