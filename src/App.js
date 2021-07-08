@@ -1,32 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
 import MainInfo from './components/MainInfo';
-import DarkorBright from './darkorBright';
 import Header from './components/Header';
 import WeekForecast from './components/WeekForecast';
-
 import Footer from './components/Footer';
 //store
-import useStore from './store/store';
+import useWeatherStore from './store/weatherStore';
 
-import { fetchWeatherForecast, fetchCurrentWeather } from './apis/fetchData';
+import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast } from './apis/fetchData';
 
 function App() {
-	const [dark, setDark] = useState(false);
-	const setWeatherData = useStore((state) => state.setWeatherData);
+	const setWeatherData = useWeatherStore((state) => state.setWeatherData);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await Promise.all([fetchCurrentWeather(), fetchWeatherForecast()]);
+			const data = await Promise.all([fetchCurrentWeather(), fetchWeatherForecast(), fetchWeekForecast()]);
 			return data;
 		};
 		fetchData().then((data) => setWeatherData(data));
 	}, []);
-
-	useEffect(() => {
-		let root = document.getElementsByTagName('html')[0];
-		root.classList.toggle('dark');
-	}, [dark]);
 
 	return (
 		<>
@@ -35,7 +27,7 @@ function App() {
 					<Header />
 					<MainInfo />
 					<WeekForecast />
-					<div className='w-full bg-dark dark:bg-bright opacity-20 h-px mt-6 mb-4'></div>
+					<div className='w-full bg-bright opacity-20 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
 			</div>
