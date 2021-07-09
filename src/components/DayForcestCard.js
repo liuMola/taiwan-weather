@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { ReactComponent as DayCloudyIcon } from '../images/day-cloudy.svg';
-
 import WeatherIcon from '../components/WeatherIcon';
 
 export default function DayForcestCard({ date, descriptionCode, temp }) {

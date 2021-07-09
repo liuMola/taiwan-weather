@@ -1,7 +1,7 @@
 //zustand store
 import create from 'zustand';
 
-const useWeatherStore = create((set) => ({
+const useStore = create((set) => ({
 	weatherData: {
 		description: 'Cloudy',
 		weatherDesCode: '1',
@@ -11,12 +11,14 @@ const useWeatherStore = create((set) => ({
 		dayHighTemp: 32,
 		dayLowTemp: 18,
 		uvIndex: 3,
-		humidity: 10,
+		humidity: 0.54,
 		observationTime: '2020-01-22 22:02:10',
 		weekForecastCode: [23, 23, 23, 23, 23],
 		weekForecastTemp: [23, 23, 23, 23, 23],
-		isLoading: false,
+		sunriseTime: '05:31',
+		sunsetTime: '18:23',
 	},
+	isLoading: false,
 
 	setWeatherData: (data) =>
 		set((state) => ({
@@ -33,9 +35,12 @@ const useWeatherStore = create((set) => ({
 				observationTime: data[0].obsTime,
 				weekForecastCode: data[2][1],
 				weekForecastTemp: data[2][0],
-				isLoading: true,
+				sunriseTime: data[3].日出時刻,
+				sunsetTime: data[3].日沒時刻,
 			},
 		})),
+
+	setLoading: () => set((state) => true),
 }));
 
-export default useWeatherStore;
+export default useStore;

@@ -1,13 +1,12 @@
 import React from 'react';
 
 import DayForcestCard from './DayForcestCard';
-import useWeatherStore from '../store/weatherStore';
+import useStore from '../store/store';
 
 export default function FiveDayForecast() {
-	const descriptionCode = useWeatherStore((state) => state.weatherData.weekForecastCode);
-	const temp = useWeatherStore((state) => state.weatherData.weekForecastTemp);
-	console.log(descriptionCode);
-	console.log(temp);
+	const descriptionCode = useStore((state) => state.weatherData.weekForecastCode);
+	const temp = useStore((state) => state.weatherData.weekForecastTemp);
+
 	const getDate = () => {
 		const date = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu'];
 		let today = new Date().getDay();
@@ -17,6 +16,7 @@ export default function FiveDayForecast() {
 		}
 		return newDate;
 	};
+
 	const date = getDate();
 
 	return (

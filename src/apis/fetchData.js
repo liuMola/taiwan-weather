@@ -1,8 +1,13 @@
 import key from '../secure/keys';
+import dayjs from 'dayjs';
+
 const baseURL = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/';
 const location = '臺北市';
-const initialDate = '2021-07-08';
-const endDate = '2021-07-12';
+
+//forecast start and end day
+const initialDate = dayjs().format('YYYY-MM-DD');
+const initialDatePlusOne = dayjs().add(1, 'day').format('YYYY-MM-DD');
+const endDate = dayjs().add(5, 'day').format('YYYY-MM-DD');
 
 //fetch Wx, pop
 const fetchWeatherForecast = () => {
@@ -12,7 +17,6 @@ const fetchWeatherForecast = () => {
 		const data = await res.json();
 		return data;
 	};
-	// weatherForecastData().then((data) => setForecastData(data));
 	return weatherForecastData().then((data) => {
 		return data.records.location[0].weatherElement.reduce((acc, item) => {
 			if (['Wx', 'PoP'].includes(item.elementName)) {
@@ -77,5 +81,24 @@ elementName=T,Wx&timeFrom=${initialDate}T00%3A00%3A00&timeTo=${endDate}T24%3A00%
 		return [tempResult, wxResult];
 	});
 };
+//fetch sunrise and sunset time
+const fetchSunriseNset = () => {
+	let url =
+		baseURL +
+		`A-B0062-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北市&timeFrom=${initialDate}&timeTo=${initialDatePlusOne}`;
+	const sunriseNsetTime = async () => {
+		const res = await fetch(url);
+		const data = await res.json();
+		return data;
+	};
+	return sunriseNsetTime().then((data) => {
+		return data.records.locations.location[0].time[0].parameter.reduce((acc, item) => {
+			if (['日出時刻', '日沒時刻'].includes(item.parameterName)) {
+				acc[item.parameterName] = item.parameterValue;
+			}
+			return acc;
+		}, {});
+	});
+};
 
-export { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast };
+export { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset };

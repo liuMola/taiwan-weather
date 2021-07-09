@@ -2,15 +2,15 @@ import React from 'react';
 
 import DescriptionCode from './DescriptionCode';
 //store
-import useWeatherStore from '../store/weatherStore';
+import useStore from '../store/store';
 
 import WeatherIcon from '../components/WeatherIcon';
 
 export default function Temperature() {
-	const descriptionCode = useWeatherStore((state) => state.weatherData.weatherDesCode);
-	const temperature = useWeatherStore((state) => state.weatherData.temperature);
-	const lowTemp = useWeatherStore((state) => state.weatherData.dayLowTemp);
-	const highTemp = useWeatherStore((state) => state.weatherData.dayHighTemp);
+	const descriptionCode = useStore((state) => state.weatherData.weatherDesCode);
+	const temperature = useStore((state) => state.weatherData.temperature);
+	const lowTemp = useStore((state) => state.weatherData.dayLowTemp);
+	const highTemp = useStore((state) => state.weatherData.dayHighTemp);
 
 	return (
 		<>
