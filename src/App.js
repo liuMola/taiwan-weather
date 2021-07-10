@@ -13,6 +13,12 @@ import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunr
 function App() {
 	const setWeatherData = useWeatherStore((state) => state.setWeatherData);
 
+	if (process.env.NODE_ENV === 'production') {
+		console.log('prod');
+	} else {
+		console.log('env');
+	}
+
 	useEffect(() => {
 		const fetchData = async () => {
 			const data = await Promise.all([
@@ -36,9 +42,9 @@ function App() {
 					<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
-				<div className='ml-8 bg-bright w-56 h-96 flex justify-center items-center rounded-3xl bg-opacity-3  white-glass'>
+				{/* <div className='ml-8 bg-bright w-56 h-96 flex justify-center items-center rounded-3xl bg-opacity-3  white-glass'>
 					<Setting />
-				</div>
+				</div> */}
 			</div>
 		</>
 	);
