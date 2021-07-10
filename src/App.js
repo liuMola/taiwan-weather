@@ -6,7 +6,7 @@ import WeekForecast from './components/WeekForecast';
 import Footer from './components/Footer';
 //store
 import useWeatherStore from './store/store';
-import Setting from './components/Setting';
+// import Setting from './components/Setting';
 
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from './apis/fetchData';
 
