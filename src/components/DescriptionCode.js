@@ -45,7 +45,11 @@ const types = {
 };
 
 const DescriptionCode = ({ desCode }) => {
-	return <>{types[desCode]}</>;
+	return (
+		<>
+			<div className='max-w-[105px] whitespace-normal'>{types[desCode]}</div>
+		</>
+	);
 };
 
 export default DescriptionCode;

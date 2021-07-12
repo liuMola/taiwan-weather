@@ -21,10 +21,8 @@ export default function Temperature() {
 							<span className='text-[80px]'>{Math.round(temperature)}</span>
 							<span className='relative text-[40px] self-start top-2 block'>°</span>
 						</div>
-						<div className='flex items-center'>
-							<span>
-								<DescriptionCode desCode={descriptionCode} />
-							</span>
+						<div className='flex items-center text-sm'>
+							<DescriptionCode desCode={descriptionCode} />
 							<div className='flex ml-2 text-sm font-thin'>
 								<div className='font-light'>{Math.round(highTemp)}</div>
 								<div className='font-light'>°</div>

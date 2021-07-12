@@ -6,7 +6,7 @@ import WeekForecast from './components/WeekForecast';
 import Footer from './components/Footer';
 //store
 import useWeatherStore from './store/store';
-// import Setting from './components/Setting';
+import Setting from './components/Setting';
 
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from './apis/fetchData';
 
@@ -21,12 +21,7 @@ function App() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await Promise.all([
-				fetchCurrentWeather(),
-				fetchWeatherForecast(),
-				fetchWeekForecast(),
-				fetchSunriseNset(),
-			]);
+			const data = await Promise.all([fetchCurrentWeather(), fetchWeatherForecast(), fetchWeekForecast(), fetchSunriseNset()]);
 			return data;
 		};
 		fetchData().then((data) => setWeatherData(data));
@@ -34,7 +29,7 @@ function App() {
 
 	return (
 		<>
-			<div className='bg-background-img h-full flex items-center justify-center text-dark font-roboto'>
+			<div className='bg-background-img h-full flex items-center justify-center text-dark font-roboto overscroll-none'>
 				<div className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-6 rounded-3xl backdrop-blur'>
 					<Header />
 					<MainInfo />

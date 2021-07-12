@@ -1,5 +1,6 @@
 //zustand store
 import create from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 const useStore = create((set) => ({
 	weatherData: {

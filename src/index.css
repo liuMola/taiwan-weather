@@ -26,4 +26,20 @@ body {
 		background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 60%, rgba(255, 255, 255, 0.1) 100%);
 		border: 1px solid rgba(255, 255, 255, 0.3);
 	}
+
+	.scrollbar {
+	}
+
+	.scrollbar::-webkit-scrollbar {
+		width: 3px;
+	}
+
+	.scrollbar::-webkit-scrollbar-thumb {
+		width: 3px;
+		background-color: ##7b7d83;
+	}
+
+	.scrollbar::-webkit-scrollbar-track {
+		background-color: rgba(255, 255, 255, 0.5) 50%;
+	}
 }
