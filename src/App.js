@@ -37,9 +37,9 @@ function App() {
 					<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
-				{/* <div className='ml-8 bg-bright w-56 h-96 flex justify-center items-center rounded-3xl bg-opacity-3  white-glass'>
+				<div className='ml-8 bg-bright w-56 h-96 p-6 rounded-3xl bg-opacity-3 white-glass'>
 					<Setting />
-				</div> */}
+				</div>
 			</div>
 		</>
 	);
