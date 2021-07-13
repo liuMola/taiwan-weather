@@ -16,7 +16,6 @@ export default function WeatherInfo() {
 	const humd = useStore((state) => state.weatherData.humidity);
 
 	function calcHumd(num) {
-		console.log(Number.parseFloat(num).toFixed(2) * 100);
 		return Number.parseFloat(num).toFixed(2) * 100;
 	}
 

@@ -5,19 +5,21 @@ import Header from './components/Header';
 import WeekForecast from './components/WeekForecast';
 import Footer from './components/Footer';
 //store
-import useWeatherStore from './store/store';
+import useStore from './store/store';
 import Setting from './components/Setting';
 
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from './apis/fetchData';
 
-function App() {
-	const setWeatherData = useWeatherStore((state) => state.setWeatherData);
+import whyDidYouRender from '@welldone-software/why-did-you-render';
+whyDidYouRender(React, {
+	onlyLogs: true,
+	titleColor: 'green',
+	diffNameColor: 'aqua',
+	trackAllPureComponents: true,
+});
 
-	if (process.env.NODE_ENV === 'production') {
-		console.log('prod');
-	} else {
-		console.log('env');
-	}
+function App() {
+	const setWeatherData = useStore((state) => state.setWeatherData);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -30,14 +32,17 @@ function App() {
 	return (
 		<>
 			<div className='bg-background-img h-full flex items-center justify-center text-dark font-roboto overscroll-none'>
-				<div className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-6 rounded-3xl backdrop-blur'>
+				<div
+					id='main'
+					className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-6 rounded-3xl backdrop-blur transition duration-500 ease-in-out'
+				>
 					<Header />
 					<MainInfo />
 					<WeekForecast />
 					<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
-				<div className='ml-8 bg-bright w-56 h-96 p-6 rounded-3xl bg-opacity-3 white-glass'>
+				<div className='ml-8 bg-bright w-56 h-96 p-6 rounded-3xl bg-opacity-5 white-glass'>
 					<Setting />
 				</div>
 			</div>

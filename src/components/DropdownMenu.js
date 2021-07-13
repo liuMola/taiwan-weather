@@ -4,16 +4,10 @@ import { Listbox, Transition } from '@headlessui/react';
 
 import { availableLocations } from '../utils/helper';
 
-const DropdownMenu = () => {
-	const [selectedLocation, setSelectedLocation] = useState(availableLocations);
-
-	const testing = () => {
-		console.log('change', selectedLocation);
-	};
-
+const DropdownMenu = ({ location, setLocation }) => {
 	return (
 		<div className='w-full scrollbar'>
-			<Listbox value={availableLocations} onChange={(setSelectedLocation, testing)}>
+			<Listbox value={availableLocations} onChange={setLocation}>
 				<div className='relative mt-1'>
 					<Listbox.Button className='relative w-full h-8 py-2 pl-3 pr-10 text-left flex items-center bg-white bg-opacity-70 rounded-xl cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm'>
 						<span className='block truncate text-xs'>City</span>
@@ -28,7 +22,7 @@ const DropdownMenu = () => {
 						</span>
 					</Listbox.Button>
 					<Transition as={Fragment} leave='transition ease-in duration-100' leaveFrom='opacity-100' leaveTo='opacity-0'>
-						<Listbox.Options className='absolute w-full py-1 mt-1 overflow-auto text-base rounded-md bg-white bg-opacity-70 scrollbar max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm'>
+						<Listbox.Options className='absolute w-full py-1 mt-1 overflow-auto text-base rounded-md bg-white bg-opacity-70 scrollbar max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm z-10'>
 							{availableLocations.map((location, index) => (
 								<Listbox.Option
 									key={index}

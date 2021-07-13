@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Temp from './Temp';
 import DescriptionCode from './DescriptionCode';
 //store
 import useStore from '../store/store';
@@ -9,6 +9,7 @@ import WeatherIcon from '../components/WeatherIcon';
 export default function Temperature() {
 	const descriptionCode = useStore((state) => state.weatherData.weatherDesCode);
 	const temperature = useStore((state) => state.weatherData.temperature);
+	const unit = useStore((state) => state.unit);
 	const lowTemp = useStore((state) => state.weatherData.dayLowTemp);
 	const highTemp = useStore((state) => state.weatherData.dayHighTemp);
 
@@ -18,7 +19,7 @@ export default function Temperature() {
 				<div className='flex items-center w-full justify-evenly'>
 					<div className='flex flex-col items-center'>
 						<div className='relative font-normal text-[42px] flex translate-y-3'>
-							<span className='text-[80px]'>{Math.round(temperature)}</span>
+							<span className='text-[80px]'>{unit === 'c' ? Math.round(temperature) : Math.round(temperature * 1.8 + 32)}</span>
 							<span className='relative text-[40px] self-start top-2 block'>°</span>
 						</div>
 						<div className='flex items-center text-sm'>
