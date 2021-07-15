@@ -22,27 +22,27 @@ export default function WeatherInfo() {
 			<div className='relatvie w-full flex items-center justify-around'>
 				<div className='flex flex-col justify-center items-center'>
 					<Lottie className='w-6' animationData={windDarkData} />
-					<div className='font-light text-[15px] mt-1'>
+					<div className='font-light text-[16px] mt-[3px]'>
 						<span>{Math.round(windSpeed)}</span>
-						<span className='text-[10px]'>&nbsp;m/s</span>
+						<span className='text-[11px]'>&nbsp;m/s</span>
 					</div>
-					<div className='font-thin text-[8px]'>Wind velocity</div>
+					<div className='font-thin text-[9px]'>Wind velocity</div>
 				</div>
 				<div className='flex flex-col justify-center items-center'>
 					<Lottie className='w-6' animationData={rainDarkData} />
-					<div className='font-light text-[15px] mt-1 translate-x-[2px]'>
+					<div className='font-light text-[16px] mt-[3px] translate-x-[2px]'>
 						<span>{pop}</span>
-						<span className='text-[10px]'>&nbsp;%</span>
+						<span className='text-[11px]'>&nbsp;%</span>
 					</div>
-					<div className='font-thin text-[8px]'>Rain Chance</div>
+					<div className='font-thin text-[9px]'>Rain Chance</div>
 				</div>
 				<div className='flex flex-col justify-center items-center'>
 					<Lottie className='w-6 -translate-x-px' animationData={humdDarkData} />
-					<div className='font-light text-[15px] mt-1 translate-x-[2px]'>
+					<div className='font-light text-[16px] mt-[3px] translate-x-[2px]'>
 						<span>{calcHumd(humd)}</span>
-						<span className='text-[10px]'>&nbsp;%</span>
+						<span className='text-[11px]'>&nbsp;%</span>
 					</div>
-					<div className='font-thin text-[8px]'>Humidity</div>
+					<div className='font-thin text-[9px]'>Humidity</div>
 				</div>
 			</div>
 		</div>

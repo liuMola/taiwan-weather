@@ -1,6 +1,7 @@
 import keys from '../secure/keys';
 
 function getLongAndLat() {
+	console.log('firing GPS');
 	return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
 }
 

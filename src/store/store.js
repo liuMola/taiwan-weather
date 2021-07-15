@@ -26,6 +26,7 @@ const useStore = create(
 		},
 		isLoading: false,
 		unit: 'c',
+		GPSLocation: '',
 		setWeatherData: (data) =>
 			set(() => ({
 				weatherData: {
@@ -54,6 +55,7 @@ const useStore = create(
 					locationName: location.locationName,
 				},
 			}),
+		setGPSLocation: (GPSLocation) => set({ GPSLocation: GPSLocation }),
 	}))
 );
 

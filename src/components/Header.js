@@ -40,7 +40,7 @@ export default function Header() {
 				<div className='flex justify-between items-center w-full'>
 					<div className='flex flex-col items-start'>
 						<span className='text-xs tracking-wider font-thin'>Taiwan</span>
-						<span className='text-2xl'>{findLocation(cityName).cityNameEn}</span>
+						<span className='text-[26px]'>{findLocation(cityName).cityNameEn}</span>
 					</div>
 					<Link to='/setting'>
 						<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer' onClick={settingClick}>
