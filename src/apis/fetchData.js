@@ -2,7 +2,6 @@ import key from '../secure/keys';
 import dayjs from 'dayjs';
 
 const baseURL = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/';
-const location = '臺北市';
 
 //forecast start and end day
 const initialDate = dayjs().format('YYYY-MM-DD');
@@ -10,8 +9,8 @@ const initialDatePlusOne = dayjs().add(1, 'day').format('YYYY-MM-DD');
 const endDate = dayjs().add(5, 'day').format('YYYY-MM-DD');
 
 //fetch Wx, pop
-const fetchWeatherForecast = () => {
-	let url = baseURL + `F-C0032-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北市`;
+const fetchWeatherForecast = (cityName) => {
+	let url = baseURL + `F-C0032-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=${cityName}`;
 	const weatherForecastData = async () => {
 		const res = await fetch(url);
 		const data = await res.json();
@@ -27,8 +26,8 @@ const fetchWeatherForecast = () => {
 	});
 };
 //fetch current weather
-const fetchCurrentWeather = () => {
-	let url = baseURL + `O-A0003-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北`;
+const fetchCurrentWeather = (locationName) => {
+	let url = baseURL + `O-A0003-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=${locationName}`;
 	const currentWeatherData = async () => {
 		const res = await fetch(url);
 		const data = await res.json();
@@ -46,12 +45,12 @@ const fetchCurrentWeather = () => {
 	});
 };
 //fetch week forecast
-const fetchWeekForecast = () => {
+const fetchWeekForecast = (cityName) => {
 	const url =
 		baseURL +
 		`F-D0047-091?
 Authorization=${key.AUTHORIZATION_KEY}&
-locationName=${location}&
+locationName=${cityName}&
 elementName=T,Wx&timeFrom=${initialDate}T00%3A00%3A00&timeTo=${endDate}T24%3A00%3A00`;
 	const weekForecastData = async () => {
 		const res = await fetch(url);
@@ -82,10 +81,9 @@ elementName=T,Wx&timeFrom=${initialDate}T00%3A00%3A00&timeTo=${endDate}T24%3A00%
 	});
 };
 //fetch sunrise and sunset time
-const fetchSunriseNset = () => {
+const fetchSunriseNset = (cityName) => {
 	let url =
-		baseURL +
-		`A-B0062-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=臺北市&timeFrom=${initialDate}&timeTo=${initialDatePlusOne}`;
+		baseURL + `A-B0062-001?Authorization=${key.AUTHORIZATION_KEY}&locationName=${cityName}&timeFrom=${initialDate}&timeTo=${initialDatePlusOne}`;
 	const sunriseNsetTime = async () => {
 		const res = await fetch(url);
 		const data = await res.json();

@@ -43,6 +43,11 @@ body {
 		background-color: rgba(255, 255, 255, 0.5) 50%;
 	}
 
+	.unit-selected {
+		background: #59a3d1;
+		color: #dfe6ee;
+	}
+
 	.settingOpen {
 		transform: scale(0.85) translateY(7%);
 		opacity: 0.5;

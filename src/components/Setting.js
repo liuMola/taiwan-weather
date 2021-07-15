@@ -1,47 +1,66 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 //components
 import DropdownMenu from './DropdownMenu';
+import CurrentLocation from './CurrentLocation';
 //store
 import useStore from '../store/store';
 //location data
-import { availableLocations, findLocation } from '../utils/helper';
+import { availableLocations } from '../utils/helper';
+import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
 
 export default function Setting() {
 	const [unit, setUnit] = useState('c');
-	const [location, setLocation] = useState(availableLocations);
+	const [location, setLocation] = useState(availableLocations[1]);
+	const [currentLocation, setCurrentLocation] = useState(false);
 	const setStoreUnit = useStore((state) => state.setUnit);
-
+	const setStoreLocation = useStore((state) => state.setLocation);
+	const setWeatherData = useStore((state) => state.setWeatherData);
+	const cityName = useStore((state) => state.location.cityName);
+	const locationName = useStore((state) => state.location.locationName);
+	const locationRef = useRef(cityName);
+	//toggle unit style
 	const toggleUnitC = () => {
 		const c = document.getElementById('celsius');
 		const f = document.getElementById('fahrenheit');
-		if (f.classList.contains('bg-[#59A3D1]') && !c.classList.contains('bg-[#59A3D1]')) {
-			c.classList.toggle('bg-[#59A3D1]');
-			c.classList.toggle('text-bright');
-			f.classList.toggle('bg-[#59A3D1]');
-			f.classList.toggle('text-bright');
+		if (f.classList.contains('unit-selected') && !c.classList.contains('unit-selected')) {
+			c.classList.toggle('unit-selected');
+			f.classList.toggle('unit-selected');
 			setUnit('c');
 		} else {
 			return;
 		}
 	};
-
 	const toggleUnitF = () => {
 		const c = document.getElementById('celsius');
 		const f = document.getElementById('fahrenheit');
-		if (!f.classList.contains('bg-[#59A3D1]') && c.classList.contains('bg-[#59A3D1]')) {
-			c.classList.toggle('bg-[#59A3D1]');
-			c.classList.toggle('text-bright');
-			f.classList.toggle('bg-[#59A3D1]');
-			f.classList.toggle('text-bright');
+		if (!f.classList.contains('unit-selected') && c.classList.contains('unit-selected')) {
+			c.classList.toggle('unit-selected');
+			f.classList.toggle('unit-selected');
 			setUnit('f');
 		} else {
 			return;
 		}
 	};
-
-	const applyChange = () => {
-		setStoreUnit(unit);
+	const applyButton = () => {
+		const applyChange = () => {
+			setStoreUnit(unit);
+			setStoreLocation(location);
+		};
+		applyChange();
+		if (!(locationRef.current === location.cityName)) {
+			const fetchData = async () => {
+				const data = await Promise.all([
+					fetchCurrentWeather(locationName),
+					fetchWeatherForecast(cityName),
+					fetchWeekForecast(cityName),
+					fetchSunriseNset(cityName),
+				]);
+				return data;
+			};
+			fetchData().then((data) => setWeatherData(data));
+		}
+		locationRef.current = location.cityName;
 	};
 
 	return (
@@ -58,8 +77,8 @@ export default function Setting() {
 					</svg>
 				</div>
 			</div>
-			<div className='mb-12'>
-				<div className='mb-3 flex items-center'>
+			<div className='mb-10 flex items-center justify-between'>
+				<div className='flex items-center'>
 					<span className='mr-[6px]'>
 						<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
 							<path
@@ -75,7 +94,7 @@ export default function Setting() {
 				<div className='flex'>
 					<div
 						id='celsius'
-						className='flex w-16 h-9 bg-white bg-[#59A3D1] text-bright justify-center items-center rounded-xl mr-5 cursor-pointer'
+						className='flex w-16 h-9 bg-white unit-selected justify-center items-center rounded-xl mr-5 cursor-pointer'
 						onClick={toggleUnitC}
 					>
 						<span className='-translate-x-px'>°C</span>
@@ -89,8 +108,8 @@ export default function Setting() {
 					</div>
 				</div>
 			</div>
-			<div className='w-full'>
-				<div className='mb-3 flex items-center'>
+			<div className='mb-4 flex items-center justify-between'>
+				<div className='flex items-center'>
 					<span className='mr-[6px]'>
 						<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
 							<path
@@ -104,7 +123,17 @@ export default function Setting() {
 					</span>
 					<span>Location</span>
 				</div>
-				<DropdownMenu location={location} setLocation={setLocation} />
+				<DropdownMenu location={location} setLocation={setLocation} currentLocation={currentLocation} />
+			</div>
+			<div>
+				<div className='flex items-center'>
+					<div>
+						<span>Use current location</span>
+					</div>
+					<div>
+						<CurrentLocation currentLocation={currentLocation} setCurrentLocation={setCurrentLocation} />
+					</div>
+				</div>
 			</div>
 			<div className='absolute bottom-2 right-0'>
 				<motion.div
@@ -112,7 +141,7 @@ export default function Setting() {
 						scale: 0.9,
 					}}
 					className='flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out'
-					onClick={applyChange}
+					onClick={applyButton}
 				>
 					<span>Apply</span>
 				</motion.div>

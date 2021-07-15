@@ -4,6 +4,9 @@ import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import settingDarkData from '../lottie/setting-for-dark.json';
 
+import { findLocation } from '../utils/helper';
+import useStore from '../store/store';
+
 const settingClick = () => {
 	const main = document.getElementById('main');
 	main.classList.toggle('settingOpen');
@@ -22,6 +25,8 @@ const container = {
 };
 
 export default function Header() {
+	const cityName = useStore((state) => state.location.cityName);
+
 	return (
 		<>
 			<motion.div
@@ -34,7 +39,7 @@ export default function Header() {
 				<div className='flex justify-between items-center w-full'>
 					<div className='flex flex-col items-start'>
 						<span className='text-xs tracking-wider font-thin'>Taiwan</span>
-						<span className='text-2xl'>Taipei City</span>
+						<span className='text-2xl'>{findLocation(cityName).cityNameEn}</span>
 					</div>
 					<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer' onClick={settingClick}>
 						<Lottie className='w-6/12' animationData={settingDarkData} />

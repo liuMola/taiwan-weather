@@ -1,6 +1,5 @@
 //zustand store
 import create from 'zustand';
-import produce from 'immer';
 import { devtools } from 'zustand/middleware';
 
 const useStore = create(
@@ -20,6 +19,10 @@ const useStore = create(
 			weekForecastTemp: [23, 23, 23, 23, 23],
 			sunriseTime: '05:31',
 			sunsetTime: '18:23',
+		},
+		location: {
+			cityName: '臺北市',
+			locationName: '臺北',
 		},
 		isLoading: false,
 		unit: 'c',
@@ -44,6 +47,13 @@ const useStore = create(
 			})),
 		setLoading: () => set(() => true),
 		setUnit: (unit) => set({ unit: unit }),
+		setLocation: (location) =>
+			set({
+				location: {
+					cityName: location.cityName,
+					locationName: location.locationName,
+				},
+			}),
 	}))
 );
 

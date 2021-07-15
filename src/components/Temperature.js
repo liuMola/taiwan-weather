@@ -1,10 +1,8 @@
 import React from 'react';
-import Temp from './Temp';
 import DescriptionCode from './DescriptionCode';
+import WeatherIcon from './WeatherIcon';
 //store
 import useStore from '../store/store';
-
-import WeatherIcon from '../components/WeatherIcon';
 
 export default function Temperature() {
 	const descriptionCode = useStore((state) => state.weatherData.weatherDesCode);

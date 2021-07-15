@@ -20,10 +20,17 @@ whyDidYouRender(React, {
 
 function App() {
 	const setWeatherData = useStore((state) => state.setWeatherData);
+	const cityName = useStore((state) => state.location.cityName);
+	const locationName = useStore((state) => state.location.locationName);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const data = await Promise.all([fetchCurrentWeather(), fetchWeatherForecast(), fetchWeekForecast(), fetchSunriseNset()]);
+			const data = await Promise.all([
+				fetchCurrentWeather(locationName),
+				fetchWeatherForecast(cityName),
+				fetchWeekForecast(cityName),
+				fetchSunriseNset(cityName),
+			]);
 			return data;
 		};
 		fetchData().then((data) => setWeatherData(data));
@@ -42,7 +49,7 @@ function App() {
 					<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 					<Footer />
 				</div>
-				<div className='ml-8 bg-bright w-56 h-96 p-6 rounded-3xl bg-opacity-5 white-glass'>
+				<div className='ml-8 bg-bright min-w-[300px] h-96 p-6 rounded-3xl bg-opacity-5 white-glass'>
 					<Setting />
 				</div>
 			</div>

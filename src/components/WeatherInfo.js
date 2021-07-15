@@ -14,11 +14,9 @@ export default function WeatherInfo() {
 	const windSpeed = useStore((state) => state.weatherData.windSpeed);
 	const pop = useStore((state) => state.weatherData.pop);
 	const humd = useStore((state) => state.weatherData.humidity);
-
 	function calcHumd(num) {
-		return Number.parseFloat(num).toFixed(2) * 100;
+		return Math.floor(Number.parseFloat(num) * 100);
 	}
-
 	return (
 		<div className='relative w-full px-2'>
 			<div className='relatvie w-full flex items-center justify-around'>
