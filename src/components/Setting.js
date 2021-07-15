@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 //components
 import DropdownMenu from './DropdownMenu';
 import CurrentLocation from './CurrentLocation';
@@ -62,89 +63,70 @@ export default function Setting() {
 		}
 		locationRef.current = location.cityName;
 	};
+	const settingClick = () => {
+		const main = document.getElementById('main');
+		main.classList.toggle('settingOpen');
+	};
 
 	return (
-		<div className='relative w-full h-full flex flex-col text-sm'>
-			<div className='flex justify-between items-center mb-6'>
-				<div className='text-xl'>Setting</div>
-				<div className='cursor-pointer'>
-					<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' viewBox='0 0 20 20' fill='currentColor'>
-						<path
-							fillRule='evenodd'
-							d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-							clipRule='evenodd'
-						/>
-					</svg>
+		<div className='absolute bottom-0 bg-bright min-w-[345px] h-[400px] px-6 py-8 rounded-3xl white-glass backdrop-blur-lg'>
+			<div className='relative w-full h-full flex flex-col text-sm'>
+				<div className='flex justify-between items-center mb-12'>
+					<div className='text-xl'>Setting</div>
+					<Link to='/'>
+						<div className='cursor-pointer' onClick={settingClick}>
+							<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' viewBox='0 0 20 20' fill='currentColor'>
+								<path
+									fillRule='evenodd'
+									d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+									clipRule='evenodd'
+								/>
+							</svg>
+						</div>
+					</Link>
 				</div>
-			</div>
-			<div className='mb-10 flex items-center justify-between'>
-				<div className='flex items-center'>
-					<span className='mr-[6px]'>
-						<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								strokeWidth={1}
-								d='M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z'
-							/>
-						</svg>
-					</span>
-					<span>Unit</span>
-				</div>
-				<div className='flex'>
-					<div
-						id='celsius'
-						className='flex w-16 h-9 bg-white unit-selected justify-center items-center rounded-xl mr-5 cursor-pointer'
-						onClick={toggleUnitC}
-					>
-						<span className='-translate-x-px'>°C</span>
-					</div>
-					<div
-						id='fahrenheit'
-						className='flex w-16 h-9 bg-white justify-center items-center rounded-xl cursor-pointer'
-						onClick={toggleUnitF}
-					>
-						<span>°F</span>
+				<div className='mb-10 flex items-center justify-between'>
+					<span className='text-[15px]'>Unit</span>
+					<div className='flex'>
+						<div
+							id='celsius'
+							className='flex w-16 h-9 bg-white unit-selected justify-center items-center rounded-xl mr-5 cursor-pointer'
+							onClick={toggleUnitC}
+						>
+							<span className='-translate-x-px'>°C</span>
+						</div>
+						<div
+							id='fahrenheit'
+							className='flex w-16 h-9 bg-white justify-center items-center rounded-xl cursor-pointer'
+							onClick={toggleUnitF}
+						>
+							<span>°F</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div className='mb-4 flex items-center justify-between'>
-				<div className='flex items-center'>
-					<span className='mr-[6px]'>
-						<svg xmlns='http://www.w3.org/2000/svg' className='h-4 w-4' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								strokeWidth={1}
-								d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'
-							/>
-							<path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 11a3 3 0 11-6 0 3 3 0 016 0z' />
-						</svg>
-					</span>
-					<span>Location</span>
+				<div className='mb-8 flex items-center justify-between'>
+					<span className='text-[15px]'>Location</span>
+					<DropdownMenu location={location} setLocation={setLocation} currentLocation={currentLocation} />
 				</div>
-				<DropdownMenu location={location} setLocation={setLocation} currentLocation={currentLocation} />
-			</div>
-			<div>
-				<div className='flex items-center'>
-					<div>
-						<span>Use current location</span>
-					</div>
+				<div className='flex items-center justify-between'>
+					<span className='text-[15px]'>Use current location</span>
 					<div>
 						<CurrentLocation currentLocation={currentLocation} setCurrentLocation={setCurrentLocation} />
 					</div>
 				</div>
-			</div>
-			<div className='absolute bottom-2 right-0'>
-				<motion.div
-					whileTap={{
-						scale: 0.9,
-					}}
-					className='flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out'
-					onClick={applyButton}
-				>
-					<span>Apply</span>
-				</motion.div>
+				<Link to='/'>
+					<div className='absolute bottom-2 right-0' onClick={settingClick}>
+						<motion.div
+							whileTap={{
+								scale: 0.9,
+							}}
+							className='flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out'
+							onClick={applyButton}
+						>
+							<span>Apply</span>
+						</motion.div>
+					</div>
+				</Link>
 			</div>
 		</div>
 	);

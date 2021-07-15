@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //Lottie
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
@@ -41,9 +42,11 @@ export default function Header() {
 						<span className='text-xs tracking-wider font-thin'>Taiwan</span>
 						<span className='text-2xl'>{findLocation(cityName).cityNameEn}</span>
 					</div>
-					<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer' onClick={settingClick}>
-						<Lottie className='w-6/12' animationData={settingDarkData} />
-					</div>
+					<Link to='/setting'>
+						<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer' onClick={settingClick}>
+							<Lottie className='w-6/12' animationData={settingDarkData} />
+						</div>
+					</Link>
 				</div>
 			</motion.div>
 		</>

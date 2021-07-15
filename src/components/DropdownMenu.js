@@ -5,7 +5,7 @@ import { availableLocations } from '../utils/helper';
 
 const DropdownMenu = ({ location, setLocation, currentLocation }) => {
 	return (
-		<div className='w-[150px] scrollbar'>
+		<div className='w-[170px] scrollbar'>
 			<Listbox value={location} onChange={setLocation} disabled={currentLocation}>
 				<div className='relative mt-1'>
 					<Listbox.Button
