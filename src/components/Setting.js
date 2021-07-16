@@ -22,6 +22,16 @@ export default function Setting() {
 	const locationName = useStore((state) => state.location.locationName);
 	const GPSLocation = useStore((state) => state.GPSLocation);
 	const locationRef = useRef(cityName);
+	const animateVariants = {
+		initial: { y: 750 },
+		animate: {
+			y: 0,
+			transition: {
+				duration: 0.5,
+				ease: [0.43, 0.13, 0.23, 0.9],
+			},
+		},
+	};
 	//toggle unit style
 	const toggleUnitC = () => {
 		const c = document.getElementById('celsius');
@@ -71,7 +81,12 @@ export default function Setting() {
 	};
 
 	return (
-		<div className='absolute bottom-0 bg-bright min-w-[345px] h-[400px] px-6 py-8 rounded-3xl white-glass backdrop-blur-lg'>
+		<motion.div
+			className='absolute bg-bright min-w-[345px] h-[400px] px-6 py-8 rounded-3xl white-glass backdrop-blur-lg'
+			variants={animateVariants}
+			initial='initial'
+			animate='animate'
+		>
 			<div className='relative w-full h-full flex flex-col text-sm'>
 				<div className='flex justify-between items-center mb-12'>
 					<div className='text-2xl'>Setting</div>
@@ -146,6 +161,6 @@ export default function Setting() {
 					</div>
 				</Link>
 			</div>
-		</div>
+		</motion.div>
 	);
 }

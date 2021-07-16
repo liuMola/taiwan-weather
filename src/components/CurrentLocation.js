@@ -12,7 +12,6 @@ function CurrentLocation({ currentLocation, setCurrentLocation }) {
 	const fetchGPSLocation = () => {
 		if (!GPSLocation) {
 			fetchCityName().then((data) => {
-				console.log(data);
 				setGPSLocation(data);
 			});
 			return;
