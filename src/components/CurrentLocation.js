@@ -1,3 +1,4 @@
+import React from 'react';
 import { Switch } from '@headlessui/react';
 
 import { fetchCityName } from '../apis/getGeoData';
