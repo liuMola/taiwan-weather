@@ -5,6 +5,7 @@ const getLongAndLatGoogle = async () => {
 	let url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.GOOGLE_KEY}`;
 	let res = await fetch(url, {
 		method: 'POST',
+		body: JSON.stringify({ considerIp: false }),
 	});
 	let data = await res.json();
 	return data;
