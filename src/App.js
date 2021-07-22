@@ -15,7 +15,7 @@ whyDidYouRender(React, {
 function App() {
 	return (
 		<>
-			<div className='bg-background-img h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
+			<div className='bg-background-img bg-cover h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
 				<Router>
 					<Switch>
 						<Route exact path='/'>

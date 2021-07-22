@@ -8,7 +8,6 @@ import useStore from '../store/store';
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
 //Lottie
 import Lottie from 'lottie-react';
-import refreshBrightData from '../lottie/refresh-for-bright.json';
 import refreshDarkData from '../lottie/refresh-for-dark.json';
 
 export default function Footer() {
@@ -16,25 +15,20 @@ export default function Footer() {
 	const time = useStore((state) => state.weatherData.observationTime);
 	const loading = useStore((state) => state.isLoading);
 	const setWeatherData = useStore((state) => state.setWeatherData);
+	const cityName = useStore((state) => state.location.cityName);
+	const locationName = useStore((state) => state.location.locationName);
 
-	// const fetch = () => {
-	// 	const fetchData = async () => {
-	// 		const data = await Promise.all([
-	// 			fetchCurrentWeather(),
-	// 			fetchWeatherForecast(),
-	// 			fetchWeekForecast(),
-	// 			fetchSunriseNset(),
-	// 		]);
-	// 		return data;
-	// 	};
-	// 	fetchData().then((data) => setWeatherData(data));
-	// };
-
-	let mode = document.getElementsByTagName('html')[0];
-	const darkOrBright = () => (mode.classList.contains('dark') ? refreshDarkData : refreshBrightData);
-
-	const playRefresh = () => {
-		lottieRef.current.play();
+	const fetch = () => {
+		const fetchData = async () => {
+			const data = await Promise.all([
+				fetchCurrentWeather(locationName),
+				fetchWeatherForecast(cityName),
+				fetchWeekForecast(cityName),
+				fetchSunriseNset(cityName),
+			]);
+			return data;
+		};
+		fetchData().then((data) => setWeatherData(data));
 	};
 
 	return (
@@ -57,7 +51,7 @@ export default function Footer() {
 					</span>
 				</div>
 				<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer'>
-					<Lottie className='w-6/12' animationData={darkOrBright()} />
+					<Lottie className='w-6/12' animationData={refreshDarkData} onClick={fetch} />
 				</div>
 			</div>
 		</div>

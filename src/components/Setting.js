@@ -8,7 +8,7 @@ import { ReactComponent as Loading } from '../images/loading.svg';
 //store
 import useStore from '../store/store';
 //location data
-import { availableLocations } from '../utils/helper';
+import { availableLocations, findLocation } from '../utils/helper';
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
 
 export default function Setting() {
@@ -61,7 +61,25 @@ export default function Setting() {
 			setStoreLocation(location);
 		};
 		applyChange();
+		//use current GPS location to fetch
+		if (currentLocation) {
+			let localName = findLocation(GPSLocation).locationName;
+			setStoreLocation(findLocation(GPSLocation));
+			const fetchData = async () => {
+				const data = await Promise.all([
+					fetchCurrentWeather(localName),
+					fetchWeatherForecast(GPSLocation),
+					fetchWeekForecast(GPSLocation),
+					fetchSunriseNset(GPSLocation),
+				]);
+				return data;
+			};
+			fetchData().then((data) => setWeatherData(data));
+			return;
+		}
+		//use user choose location to fetch
 		if (!(locationRef.current === location.cityName)) {
+			setStoreLocation(location);
 			const fetchData = async () => {
 				const data = await Promise.all([
 					fetchCurrentWeather(locationName),
@@ -72,6 +90,7 @@ export default function Setting() {
 				return data;
 			};
 			fetchData().then((data) => setWeatherData(data));
+			return;
 		}
 		locationRef.current = location.cityName;
 	};

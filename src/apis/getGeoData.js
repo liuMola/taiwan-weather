@@ -1,19 +1,20 @@
 import keys from '../secure/keys';
 
 const getLongAndLatGoogle = async () => {
-	console.log('fire get location');
-	let url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.GOOGLE_KEY}`;
-	let res = await fetch(url, {
-		method: 'POST',
-	});
-	let data = await res.json();
-	return data;
+	try {
+		console.log('fire get location');
+		let url = `https://www.googleapis.com/geolocation/v1/geolocate?key=${keys.GOOGLE_KEY}`;
+		let res = await fetch(url, {
+			method: 'POST',
+		});
+		let data = await res.json();
+		return data;
+	} catch (e) {
+		console.log('get latitude and longitude fail: ' + e.message);
+	}
 };
 
-// function getLongAndLat() {
-// 	console.log('firing GPS');
-// 	return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject));
-// }
+navigator.geolocation.getCurrentPosition((data) => console.log(data.coords));
 
 const fetchCityName = async () => {
 	try {
@@ -24,7 +25,7 @@ const fetchCityName = async () => {
 		let data = await res.json();
 		return data.results[0].address_components[4].long_name;
 	} catch (e) {
-		alert('Error: ' + e.message);
+		console.log('fetch city from GPS fail: ' + e.message);
 	}
 };
 
