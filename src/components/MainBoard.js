@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 //components
 import MainInfo from './MainInfo';
 import Header from './Header';
@@ -6,26 +6,13 @@ import WeekForecast from './WeekForecast';
 import Footer from './Footer';
 //store
 import useStore from '../store/store';
-//fetch
-import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
+//custom hook for weather fetching
+import useWeatherApi from '../hooks/useWeatherAPI';
 
 export default function MainBoard() {
-	const setWeatherData = useStore((state) => state.setWeatherData);
 	const cityName = useStore((state) => state.location.cityName);
 	const locationName = useStore((state) => state.location.locationName);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const data = await Promise.all([
-				fetchCurrentWeather(locationName),
-				fetchWeatherForecast(cityName),
-				fetchWeekForecast(cityName),
-				fetchSunriseNset(cityName),
-			]);
-			return data;
-		};
-		fetchData().then((data) => setWeatherData(data));
-	}, []);
+	useWeatherApi(locationName, cityName);
 
 	return (
 		<div

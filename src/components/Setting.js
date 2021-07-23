@@ -21,6 +21,7 @@ export default function Setting() {
 	const cityName = useStore((state) => state.location.cityName);
 	const locationName = useStore((state) => state.location.locationName);
 	const GPSLocation = useStore((state) => state.GPSLocation);
+	const isLoading = useStore((state) => state.isLoading);
 	const locationRef = useRef(cityName);
 	const animateVariants = {
 		initial: { y: 750 },
@@ -55,10 +56,14 @@ export default function Setting() {
 			return;
 		}
 	};
+	//toggle setting style
+	const settingClick = () => {
+		const main = document.getElementById('main');
+		main.classList.toggle('settingOpen');
+	};
 	const applyButton = () => {
 		const applyChange = () => {
 			setStoreUnit(unit);
-			setStoreLocation(location);
 		};
 		applyChange();
 		//use current GPS location to fetch
@@ -75,6 +80,8 @@ export default function Setting() {
 				return data;
 			};
 			fetchData().then((data) => setWeatherData(data));
+			setLocation(findLocation(GPSLocation));
+			settingClick();
 			return;
 		}
 		//use user choose location to fetch
@@ -90,13 +97,11 @@ export default function Setting() {
 				return data;
 			};
 			fetchData().then((data) => setWeatherData(data));
+			settingClick();
 			return;
 		}
 		locationRef.current = location.cityName;
-	};
-	const settingClick = () => {
-		const main = document.getElementById('main');
-		main.classList.toggle('settingOpen');
+		settingClick();
 	};
 
 	return (
@@ -166,17 +171,17 @@ export default function Setting() {
 						</>
 					)}
 				</div>
-				<Link to='/'>
-					<div className='absolute bottom-2 right-0' onClick={settingClick}>
-						<motion.div
-							whileTap={{
-								scale: 0.9,
-							}}
-							className='flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out'
+				<Link to={isLoading ? '#' : '/'}>
+					<div className='absolute bottom-2 right-0'>
+						<button
+							type='button'
 							onClick={applyButton}
+							className={`flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out 
+							${currentLocation && !GPSLocation ? 'opacity-30 cursor-not-allowed hover:bg-[#59A3D1]' : null}`}
+							disabled={currentLocation && !GPSLocation}
 						>
 							<span>Apply</span>
-						</motion.div>
+						</button>
 					</div>
 				</Link>
 			</div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch } from '@headlessui/react';
-
 import { fetchCityName } from '../apis/getGeoData';
 //store
 import useStore from '../store/store';
@@ -8,12 +7,15 @@ import useStore from '../store/store';
 function CurrentLocation({ currentLocation, setCurrentLocation }) {
 	const setGPSLocation = useStore((state) => state.setGPSLocation);
 	const GPSLocation = useStore((state) => state.GPSLocation);
+	const setLoading = useStore((state) => state.setLoading);
 
 	const fetchGPSLocation = () => {
 		if (!GPSLocation) {
+			setLoading(true);
 			fetchCityName().then((data) => {
 				setGPSLocation(data);
 			});
+			setLoading(false);
 			return;
 		}
 	};

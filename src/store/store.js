@@ -24,7 +24,7 @@ const useStore = create(
 			cityName: '臺北市',
 			locationName: '臺北',
 		},
-		isLoading: false,
+		isLoading: true,
 		unit: 'c',
 		GPSLocation: '',
 		setWeatherData: (data) =>
@@ -46,7 +46,7 @@ const useStore = create(
 					sunsetTime: data[3].日沒時刻,
 				},
 			})),
-		setLoading: () => set(() => true),
+		setLoading: (condition) => set(() => ({ isLoading: condition })),
 		setUnit: (unit) => set({ unit: unit }),
 		setLocation: (location) =>
 			set({
