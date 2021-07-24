@@ -31,7 +31,7 @@ export default function Temperature() {
 							</div>
 						</div>
 					</div>
-					<div className='ml-2 w-28 h-28'>
+					<div className='ml-2 w-36 h-36'>
 						<WeatherIcon descriptionCode={descriptionCode} moment='day' />
 					</div>
 				</div>
