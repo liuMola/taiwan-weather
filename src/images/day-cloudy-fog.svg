@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="136px" height="147px" viewBox="0 0 136 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
-    <title>day-cloudy-fog</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <linearGradient x1="24.3617045%" y1="72.8710337%" x2="63.6421593%" y2="39.9796521%" id="linearGradient-1">
-            <stop stop-color="#F2F2F2" offset="0%"></stop>
-            <stop stop-color="#CFCFCF" offset="100%"></stop>
-        </linearGradient>
-        <linearGradient x1="72.5161778%" y1="64.9090909%" x2="8.66000803%" y2="22.6545455%" id="linearGradient-2">
-            <stop stop-color="#FFFFFF" offset="2%"></stop>
-            <stop stop-color="#FFFFFF" stop-opacity="0" offset="100%"></stop>
-        </linearGradient>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="day-cloudy-fog" transform="translate(0.000000, 1.000000)">
-            <circle id="Oval" fill="#EFCC00" fill-rule="nonzero" cx="84.5" cy="51.1578564" r="31.5"></circle>
-            <path d="M84,0.657856446 L84,11.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M84,89.6578564 L84,100.657856" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M34,50.6578564 L45,50.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M123,50.6578564 L134,50.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M49,15.6578564 L57,23.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M112,77.6578564 L120,85.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M49,85.6578564 L57,77.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M112,23.6578564 L120,15.6578564" id="Path" stroke="#EFCC00" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M43.6759917,35.6578564 C59.8900952,35.6251993 74.7864611,44.5461385 82.3604414,58.8247795 C94.8397967,51.5578016 110.55339,52.8589125 121.656555,62.078561 C132.75972,71.2982096 136.871287,86.4591631 131.938648,99.9926488 C127.006009,113.526134 114.08701,122.52978 99.6311764,122.508714 L43.6759917,122.657856 C19.5544075,122.657856 0,103.182263 0,79.1579014 C0,55.1335396 19.5544075,35.6578564 43.6759917,35.6578564 Z" id="Path" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
-            <ellipse id="Oval" fill="url(#linearGradient-2)" fill-rule="nonzero" transform="translate(99.376091, 88.169323) rotate(-74.390000) translate(-99.376091, -88.169323) " cx="99.3760914" cy="88.1693226" rx="34.1705349" ry="34.2478481"></ellipse>
-            <path d="M80,131.657856 L105,131.657856" id="Path" stroke="#A5A9AA" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M25,131.657856 L67,131.657856" id="Path" stroke="#B9C1C6" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M68,143.657856 L96,143.657856" id="Path" stroke="#A5A9AA" stroke-width="3" stroke-linecap="round"></path>
-            <path d="M35,143.657856 L54,143.657856" id="Path" stroke="#A5A9AA" stroke-width="3" stroke-linecap="round"></path>
-        </g>
-    </g>
+<svg viewBox="0 0 194 194" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M167.362 62.8953C169.371 43.7762 155.501 26.648 136.382 24.6385C117.263 22.629 100.135 36.4991 98.1252 55.6182C96.1157 74.7373 109.986 91.8655 129.105 93.875C148.224 95.8845 165.352 82.0144 167.362 62.8953Z" fill="url(#paint0_linear)"/>
+<path d="M116.512 48.2103C119.537 50.1424 122.73 50.4779 126.091 49.2171" stroke="black" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M116.385 41.7404C116.477 40.8587 116.016 40.0876 115.355 40.0181C114.694 39.9486 114.083 40.607 113.99 41.4887C113.897 42.3704 114.358 43.1415 115.019 43.211C115.681 43.2805 116.292 42.6221 116.385 41.7404Z" fill="black"/>
+<path d="M129.156 43.0827C129.249 42.201 128.788 41.4299 128.127 41.3604C127.466 41.2909 126.854 41.9493 126.762 42.831C126.669 43.7128 127.13 44.4839 127.791 44.5534C128.453 44.6229 129.064 43.9644 129.156 43.0827Z" fill="black"/>
+<g filter="url(#filter0_b)">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="22" y="45" width="147" height="99">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M74.3513 143.733C73.3522 143.794 72.3453 143.824 71.3311 143.824C44.0862 143.824 22 121.738 22 94.4932C22 67.2484 44.0862 45.1622 71.3311 45.1622C93.3639 45.1622 112.023 59.6065 118.356 79.5425C123.226 76.879 128.815 75.3649 134.757 75.3649C153.661 75.3649 168.986 90.6901 168.986 109.595C168.986 128.499 153.661 143.824 134.757 143.824H74.3513V143.733Z" fill="white"/>
+</mask>
+<g mask="url(#mask0)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M74.3513 143.733C73.3522 143.794 72.3453 143.824 71.3311 143.824C44.0862 143.824 22 121.738 22 94.4932C22 67.2484 44.0862 45.1622 71.3311 45.1622C93.3639 45.1622 112.023 59.6065 118.356 79.5425C123.226 76.879 128.815 75.3649 134.757 75.3649C153.661 75.3649 168.986 90.6901 168.986 109.595C168.986 128.499 153.661 143.824 134.757 143.824H74.3513V143.733Z" fill="url(#paint1_linear)"/>
+<path d="M74.3512 143.733H75.358V142.664L74.2906 142.728L74.3512 143.733ZM118.356 79.5425L117.396 79.8474L117.766 81.0124L118.839 80.4259L118.356 79.5425ZM74.3512 143.824H73.3445V144.831H74.3512V143.824ZM74.2906 142.728C73.3117 142.788 72.3248 142.818 71.331 142.818V144.831C72.3655 144.831 73.3928 144.8 74.4119 144.738L74.2906 142.728ZM71.331 142.818C44.6423 142.818 23.0067 121.182 23.0067 94.4933H20.9932C20.9932 122.294 43.5302 144.831 71.331 144.831V142.818ZM23.0067 94.4933C23.0067 67.8046 44.6423 46.169 71.331 46.169V44.1555C43.5302 44.1555 20.9932 66.6925 20.9932 94.4933H23.0067ZM71.331 46.169C92.9128 46.169 111.193 60.3173 117.396 79.8474L119.315 79.2377C112.854 58.896 93.8151 44.1555 71.331 44.1555V46.169ZM118.839 80.4259C123.565 77.8413 128.988 76.3717 134.757 76.3717V74.3581C128.641 74.3581 122.887 75.9168 117.873 78.6592L118.839 80.4259ZM134.757 76.3717C153.105 76.3717 167.98 91.2461 167.98 109.595H169.993C169.993 90.134 154.217 74.3581 134.757 74.3581V76.3717ZM167.98 109.595C167.98 127.943 153.105 142.818 134.757 142.818V144.831C154.217 144.831 169.993 129.055 169.993 109.595H167.98ZM134.757 142.818H74.3512V144.831H134.757V142.818ZM75.358 143.824V143.733H73.3445V143.824H75.358Z" fill="#E9E9E9" fill-opacity="0.6"/>
+</g>
+</g>
+<line opacity="0.65" x1="58.25" y1="155.75" x2="95.75" y2="155.75" stroke="#7B7D83" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round"/>
+<line opacity="0.65" x1="111.25" y1="155.75" x2="134.75" y2="155.75" stroke="#7B7D83" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round"/>
+<line opacity="0.65" x1="70.25" y1="167.75" x2="89.75" y2="167.75" stroke="#7B7D83" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round"/>
+<line opacity="0.65" x1="102.25" y1="167.75" x2="127.75" y2="167.75" stroke="#7B7D83" stroke-opacity="0.65" stroke-width="2.5" stroke-linecap="round"/>
+<defs>
+<filter id="filter0_b" x="12" y="35.1622" width="166.986" height="118.662" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feGaussianBlur in="BackgroundImage" stdDeviation="5"/>
+<feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear" x1="110.595" y1="33.0811" x2="156.906" y2="84.4257" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F7D649"/>
+<stop offset="1" stop-color="#F0B61F"/>
+</linearGradient>
+<linearGradient id="paint1_linear" x1="42.1351" y1="56.2365" x2="206.236" y2="164.966" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0.85"/>
+<stop offset="1" stop-color="white" stop-opacity="0.3"/>
+</linearGradient>
+</defs>
 </svg>
