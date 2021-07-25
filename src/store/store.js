@@ -24,7 +24,7 @@ const useStore = create(
 			cityName: '臺北市',
 			locationName: '臺北',
 		},
-		isLoading: true,
+		isLoading: false,
 		unit: 'c',
 		GPSLocation: '',
 		setWeatherData: (data) =>

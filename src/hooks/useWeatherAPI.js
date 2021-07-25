@@ -117,7 +117,7 @@ const useWeatherApi = (locationName, cityName) => {
 			return data;
 		};
 		fetchData().then((data) => setWeatherData(data));
-		// setLoading(false);
+		setLoading(false);
 	}, []);
 };
 
