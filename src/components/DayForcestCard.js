@@ -1,6 +1,7 @@
 import React from 'react';
 
-import WeatherIcon from '../components/WeatherIcon';
+// import WeatherIcon from '../components/WeatherIcon';
+import WeatherLottie from '../components/WeatherLottie';
 
 export default function DayForcestCard({ date, descriptionCode, temp }) {
 	return (
@@ -9,7 +10,8 @@ export default function DayForcestCard({ date, descriptionCode, temp }) {
 				<div>{date}</div>
 				<div className='mt-1 mb-1'>
 					<div className='w-7 h-7'>
-						<WeatherIcon descriptionCode={descriptionCode} moment='day' />
+						{/* <WeatherIcon descriptionCode={descriptionCode} moment='day' /> */}
+						<WeatherLottie descriptionCode={descriptionCode} moment='day' />
 					</div>
 				</div>
 				<div className='flex'>

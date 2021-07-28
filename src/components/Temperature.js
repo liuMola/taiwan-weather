@@ -1,9 +1,9 @@
 import React from 'react';
 import DescriptionCode from './DescriptionCode';
 import WeatherIcon from './WeatherIcon';
+import WeatherLottie from './WeatherLottie';
 //store
 import useStore from '../store/store';
-import { ReactComponent as DayCloudy } from '../images/day-thunderstorm.svg';
 
 export default function Temperature() {
 	const descriptionCode = useStore((state) => state.weatherData.weatherDesCode);
@@ -34,7 +34,7 @@ export default function Temperature() {
 					</div>
 					<div className='ml-2 w-36 h-36'>
 						{/* <WeatherIcon descriptionCode={descriptionCode} moment='day' /> */}
-						<DayCloudy />
+						<WeatherLottie descriptionCode={descriptionCode} moment='day' />
 					</div>
 				</div>
 			</div>

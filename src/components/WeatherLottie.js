@@ -1,5 +1,11 @@
 import React, { useMemo } from 'react';
 //icon
+import Lottie from 'lottie-react';
+import clearFog from '../lottie/day-clear-fog.json';
+import clear from '../lottie/day-clear.json';
+import rain from '../lottie/day-clear-rain.json';
+import fog from '../lottie/day-fog.json';
+import thunderstrom from '../lottie/day-thunderstrom.json';
 import { ReactComponent as DayClear } from '../images/day-clear.svg';
 import { ReactComponent as DayCloudy } from '../images/day-cloudy.svg';
 import { ReactComponent as DayCloudyFog } from '../images/day-cloudy-fog.svg';
@@ -25,37 +31,40 @@ const weatherTypes = {
 	isSnowing: [23, 37, 42],
 };
 
-const weatherIcons = {
+const weatherLottie = {
 	day: {
-		isThunderstorm: <DayThunderstorm />,
-		isClear: <DayClear />,
-		isCloudyFog: <DayCloudyFog />,
-		isCloudy: <DayCloudy />,
-		isFog: <DayFog />,
-		isPartiallyClearWithRain: <DayPartiallyClearWithRain />,
-		isSnowing: <DaySnowing />,
+		isThunderstorm: thunderstrom,
+		isClear: clear,
+		isCloudyFog: fog,
+		isCloudy: clear,
+		isFog: clearFog,
+		isPartiallyClearWithRain: rain,
+		isSnowing: clear,
 	},
 	night: {
-		isThunderstorm: <NightThunderstorm />,
-		isClear: <NightClear />,
-		isCloudyFog: <NightCloudyFog />,
-		isCloudy: <NightCloudy />,
-		isFog: <NightFog />,
-		isPartiallyClearWithRain: <NightPartiallyClearWithRain />,
-		isSnowing: <NightSnowing />,
+		isThunderstorm: thunderstrom,
+		isClear: clear,
+		isCloudyFog: fog,
+		isCloudy: clear,
+		isFog: clearFog,
+		isPartiallyClearWithRain: rain,
+		isSnowing: clear,
 	},
 };
 
 const weatherCode2Type = (weatherCode) => {
 	const [weatherType] = Object.entries(weatherTypes).find(([weatherType, weatherCodes]) => weatherCodes.includes(Number(weatherCode))) || [];
-
 	return weatherType;
 };
 
-const WeatherIcon = ({ descriptionCode, moment }) => {
+const WeatherLottie = ({ descriptionCode, moment }) => {
 	const weatherType = useMemo(() => weatherCode2Type(descriptionCode), [descriptionCode]);
-	const weatherIcon = weatherIcons[moment][weatherType];
-	return <>{weatherIcon}</>;
+	const weatherAnimation = weatherLottie[moment][weatherType];
+	return (
+		<>
+			<Lottie animationData={weatherAnimation} />
+		</>
+	);
 };
 
-export default WeatherIcon;
+export default WeatherLottie;
