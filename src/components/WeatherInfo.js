@@ -1,11 +1,8 @@
 import React from 'react';
-//components
 //lottie
 import Lottie from 'lottie-react';
 import windDarkData from '../lottie/wind-for-dark.json';
-
 import rainDarkData from '../lottie/rain-for-dark.json';
-
 import humdDarkData from '../lottie/humd-for-dark.json';
 //store
 import useStore from '../store/store';
