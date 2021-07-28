@@ -85,7 +85,7 @@ export default function Setting() {
 			return;
 		}
 		//use user choose location to fetch
-		if (!(locationRef.current === location.cityName)) {
+		const fetchWithSelectedLocation = () => {
 			setStoreLocation(location);
 			const fetchData = async () => {
 				const data = await Promise.all([
@@ -97,11 +97,12 @@ export default function Setting() {
 				return data;
 			};
 			fetchData().then((data) => setWeatherData(data));
+			locationRef.current = location.cityName;
 			settingClick();
 			return;
-		}
-		locationRef.current = location.cityName;
-		settingClick();
+		};
+		fetchWithSelectedLocation();
+		// settingClick();
 	};
 
 	return (

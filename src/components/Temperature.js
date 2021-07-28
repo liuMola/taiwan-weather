@@ -1,6 +1,5 @@
 import React from 'react';
 import DescriptionCode from './DescriptionCode';
-import WeatherIcon from './WeatherIcon';
 import WeatherLottie from './WeatherLottie';
 //store
 import useStore from '../store/store';
@@ -14,7 +13,7 @@ export default function Temperature() {
 
 	return (
 		<>
-			<div className='mb-6 w-full pl-2'>
+			<div className='mb-6 w-full pl-1'>
 				<div className='flex items-center w-full justify-evenly'>
 					<div className='flex flex-col items-center'>
 						<div className='relative font-normal text-[42px] flex translate-y-3'>
@@ -32,8 +31,7 @@ export default function Temperature() {
 							</div>
 						</div>
 					</div>
-					<div className='ml-2 w-36 h-36'>
-						{/* <WeatherIcon descriptionCode={descriptionCode} moment='day' /> */}
+					<div className='ml-2 w-28 h-28 flex justify-center items-center'>
 						<WeatherLottie descriptionCode={descriptionCode} moment='day' />
 					</div>
 				</div>

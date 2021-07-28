@@ -8,9 +8,8 @@ export default function DayForcestCard({ date, descriptionCode, temp }) {
 		<div className='white-glass py-4 px-3 rounded-xl'>
 			<div className='flex flex-col items-center font-light text-[12px] text-dark'>
 				<div>{date}</div>
-				<div className='mt-1 mb-1'>
-					<div className='w-7 h-7'>
-						{/* <WeatherIcon descriptionCode={descriptionCode} moment='day' /> */}
+				<div className='mt-2 mb-3'>
+					<div className='w-7 h-7 flex justify-center items-center'>
 						<WeatherLottie descriptionCode={descriptionCode} moment='day' />
 					</div>
 				</div>

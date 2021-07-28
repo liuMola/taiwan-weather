@@ -1,6 +1,6 @@
 # Taiwan Weather
 
-![Alt text](public/mockup.jpeg)
+![Alt text](public/mockup-new.jpeg)
 
 [Taiwan Weather App](https://taiwan-weather.netlify.app/)
 
