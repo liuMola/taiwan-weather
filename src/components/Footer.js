@@ -1,7 +1,6 @@
 import React, { useRef } from 'react';
 import dayjs from 'dayjs';
 //components
-import { ReactComponent as RefreshIcon } from '../images/refresh.svg';
 //store
 import useStore from '../store/store';
 //data fetching
@@ -11,9 +10,7 @@ import Lottie from 'lottie-react';
 import refreshDarkData from '../lottie/refresh-for-dark.json';
 
 export default function Footer() {
-	const lottieRef = useRef(null);
 	const time = useStore((state) => state.weatherData.observationTime);
-	const loading = useStore((state) => state.isLoading);
 	const setWeatherData = useStore((state) => state.setWeatherData);
 	const cityName = useStore((state) => state.location.cityName);
 	const locationName = useStore((state) => state.location.locationName);
