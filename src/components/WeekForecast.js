@@ -38,7 +38,7 @@ export default function FiveDayForecast() {
 
 	return (
 		<div className='mb-6'>
-			<div className='text-base font-normal mb-5'>
+			<div className='text-base font-normal mb-5 pl-3'>
 				<span>Week forecast</span>
 			</div>
 			<div className='flex justify-between'>

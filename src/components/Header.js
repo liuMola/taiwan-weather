@@ -35,7 +35,7 @@ export default function Header() {
 				initial='hidden'
 				animate='visible'
 				transition={{ ease: 'easeOut', duration: 2 }}
-				className='relative top-0 mt-2 mb-4 p-1 w-full'
+				className='relative top-0 mt-2 mb-2 py-1 pl-3 pr-1 w-full'
 			>
 				<div className='flex justify-between items-center w-full'>
 					<div className='flex flex-col items-start'>

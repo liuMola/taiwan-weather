@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 //components
 import MainBoard from './components/MainBoard';
-import Setting from './components/Setting';
+
 import Loading from './components/Loading';
 
 import whyDidYouRender from '@welldone-software/why-did-you-render';
@@ -13,10 +13,12 @@ whyDidYouRender(React, {
 	trackAllPureComponents: true,
 });
 
+const Setting = lazy(() => import('./components/Setting'));
+
 function App() {
 	return (
 		<>
-			<Loading />
+			{/* <Loading /> */}
 			<div className='bg-background-img bg-cover h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
 				<Router>
 					<Switch>
@@ -25,7 +27,9 @@ function App() {
 						</Route>
 						<Route path='/setting'>
 							<MainBoard />
-							<Setting />
+							<Suspense fallback={<div>Loading...</div>}>
+								<Setting />
+							</Suspense>
 						</Route>
 					</Switch>
 				</Router>

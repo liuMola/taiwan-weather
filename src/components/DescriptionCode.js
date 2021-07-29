@@ -47,7 +47,7 @@ const types = {
 const DescriptionCode = ({ desCode }) => {
 	return (
 		<>
-			<div className='max-w-[105px] whitespace-normal'>{types[desCode]}</div>
+			<div className='max-w-[105px] whitespace-normal text-center'>{types[desCode]}</div>
 		</>
 	);
 };

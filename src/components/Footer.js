@@ -32,7 +32,7 @@ export default function Footer() {
 	};
 
 	return (
-		<div className='flex items-center justify-between w-full text-[8px] pt-1 text-bright'>
+		<div className='flex items-center justify-between w-full text-[9px] pt-1 text-bright'>
 			<div className='font-thin tracking-wide'>
 				<span>
 					Taiwan <br />
@@ -41,7 +41,7 @@ export default function Footer() {
 				</span>
 			</div>
 			<div className='flex items-center'>
-				<div className='flex flex-col font-light mr-2'>
+				<div className='flex flex-col font-light mr-2 tracking-wide'>
 					<span>Last Obser.</span>
 					<span>
 						{new Intl.DateTimeFormat('en-US', {

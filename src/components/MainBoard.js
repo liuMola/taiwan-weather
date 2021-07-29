@@ -17,7 +17,7 @@ export default function MainBoard() {
 	return (
 		<div
 			id='main'
-			className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-6 rounded-3xl backdrop-blur transition duration-500 ease-in-out'
+			className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-4 rounded-3xl backdrop-blur transition duration-500 ease-in-out'
 		>
 			<Header />
 			<MainInfo />
