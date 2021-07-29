@@ -1,25 +1,13 @@
 import React, { useMemo } from 'react';
 //icon
 import Lottie from 'lottie-react';
-import clearFog from '../lottie/day-clear-fog.json';
 import clear from '../lottie/day-clear.json';
+import clearFog from '../lottie/day-clear-fog.json';
+import clearCloudy from '../lottie/day-clear-cloudy.json';
+import clearSnow from '../lottie/day-clear-snow.json';
 import rain from '../lottie/day-clear-rain.json';
-import fog from '../lottie/day-fog.json';
+import cloudyFog from '../lottie/day-cloudy-fog.json';
 import thunderstrom from '../lottie/day-thunderstrom.json';
-import { ReactComponent as DayClear } from '../images/day-clear.svg';
-import { ReactComponent as DayCloudy } from '../images/day-cloudy.svg';
-import { ReactComponent as DayCloudyFog } from '../images/day-cloudy-fog.svg';
-import { ReactComponent as DayFog } from '../images/day-fog.svg';
-import { ReactComponent as DayPartiallyClearWithRain } from '../images/day-partially-clear-with-rain.svg';
-import { ReactComponent as DaySnowing } from '../images/day-snowing.svg';
-import { ReactComponent as DayThunderstorm } from '../images/day-thunderstorm.svg';
-import { ReactComponent as NightClear } from '../images/night-clear.svg';
-import { ReactComponent as NightCloudy } from '../images/night-cloudy.svg';
-import { ReactComponent as NightCloudyFog } from '../images/night-cloudy-fog.svg';
-import { ReactComponent as NightFog } from '../images/night-fog.svg';
-import { ReactComponent as NightPartiallyClearWithRain } from '../images/night-partially-clear-with-rain.svg';
-import { ReactComponent as NightSnowing } from '../images/night-snowing.svg';
-import { ReactComponent as NightThunderstorm } from '../images/night-thunderstorm.svg';
 
 const weatherTypes = {
 	isThunderstorm: [15, 16, 17, 18, 21, 22, 33, 34, 35, 36, 41],
@@ -35,20 +23,20 @@ const weatherLottie = {
 	day: {
 		isThunderstorm: thunderstrom,
 		isClear: clear,
-		isCloudyFog: fog,
-		isCloudy: clear,
+		isCloudyFog: cloudyFog,
+		isCloudy: clearCloudy,
 		isFog: clearFog,
 		isPartiallyClearWithRain: rain,
-		isSnowing: clear,
+		isSnowing: clearSnow,
 	},
 	night: {
 		isThunderstorm: thunderstrom,
 		isClear: clear,
-		isCloudyFog: fog,
-		isCloudy: clear,
+		isCloudyFog: cloudyFog,
+		isCloudy: clearCloudy,
 		isFog: clearFog,
 		isPartiallyClearWithRain: rain,
-		isSnowing: clear,
+		isSnowing: clearSnow,
 	},
 };
 
