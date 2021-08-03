@@ -18,22 +18,21 @@ const Setting = lazy(() => import('./components/Setting'));
 function App() {
 	return (
 		<>
-			{/* <Loading /> */}
-			<div className='bg-background-img bg-cover h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
-				<Router>
-					<Switch>
-						<Route exact path='/'>
-							<MainBoard />
-						</Route>
-						<Route path='/setting'>
-							<MainBoard />
-							<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<Loading />}>
+				<div className='bg-background-img bg-cover h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
+					<Router>
+						<Switch>
+							<Route exact path='/'>
+								<MainBoard />
+							</Route>
+							<Route path='/setting'>
+								<MainBoard />
 								<Setting />
-							</Suspense>
-						</Route>
-					</Switch>
-				</Router>
-			</div>
+							</Route>
+						</Switch>
+					</Router>
+				</div>
+			</Suspense>
 		</>
 	);
 }
