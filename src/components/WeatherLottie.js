@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import loadable from '@loadable/component';
 import Lottie from 'lottie-react';
 //icon
 import clear from '../lottie/day-clear.json';
