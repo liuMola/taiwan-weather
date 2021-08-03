@@ -1,3 +1,5 @@
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 // craco.config.js
 module.exports = {
 	style: {
@@ -35,5 +37,8 @@ module.exports = {
 		alias: {
 			'react-redux': process.env.NODE_ENV === 'development' ? 'react-redux/lib' : 'react-redux',
 		},
+		// plugins: {
+		// 	add: [new BundleAnalyzerPlugin()] /* An array of plugins */,
+		// },
 	},
 };

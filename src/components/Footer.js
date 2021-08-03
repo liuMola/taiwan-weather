@@ -29,7 +29,7 @@ export default function Footer() {
 	};
 
 	return (
-		<div className='flex items-center justify-between w-full text-[9px] pt-1 text-bright'>
+		<div className='flex items-center justify-between w-full text-[9px] pt-1 px-2 text-bright'>
 			<div className='font-thin tracking-wide'>
 				<span>
 					Taiwan <br />

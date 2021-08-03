@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
-//icon
+import loadable from '@loadable/component';
 import Lottie from 'lottie-react';
+//icon
 import clear from '../lottie/day-clear.json';
 import clearFog from '../lottie/day-clear-fog.json';
 import clearCloudy from '../lottie/day-clear-cloudy.json';
@@ -8,6 +9,13 @@ import clearSnow from '../lottie/day-clear-snow.json';
 import rain from '../lottie/day-clear-rain.json';
 import cloudyFog from '../lottie/day-cloudy-fog.json';
 import thunderstrom from '../lottie/day-thunderstrom.json';
+// const clear = loadable(() => import('../lottie/day-clear.json'));
+// const clearFog = loadable(() => import('../lottie/day-clear-fog.json'));
+// const clearCloudy = loadable(() => import('../lottie/day-clear-cloudy.json'));
+// const clearSnow = loadable(() => import('../lottie/day-clear-snow.json'));
+// const rain = loadable(() => import('../lottie/day-clear-rain.json'));
+// const cloudyFog = loadable(() => import('../lottie/day-cloudy-fog.json'));
+// const thunderstrom = loadable(() => import('../lottie/day-thunderstrom.json'));
 
 const weatherTypes = {
 	isThunderstorm: [15, 16, 17, 18, 21, 22, 33, 34, 35, 36, 41],

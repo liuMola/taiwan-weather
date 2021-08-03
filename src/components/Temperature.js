@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import DescriptionCode from './DescriptionCode';
-import WeatherLottie from './WeatherLottie';
 //store
 import useStore from '../store/store';
 
@@ -10,6 +9,7 @@ export default function Temperature() {
 	const unit = useStore((state) => state.unit);
 	const lowTemp = useStore((state) => state.weatherData.dayLowTemp);
 	const highTemp = useStore((state) => state.weatherData.dayHighTemp);
+	const WeatherLottie = lazy(() => import('./WeatherLottie'));
 
 	return (
 		<>
@@ -32,7 +32,9 @@ export default function Temperature() {
 						</div>
 					</div>
 					<div className='ml-2 w-28 h-28 flex justify-center items-center'>
-						<WeatherLottie descriptionCode={descriptionCode} moment='day' />
+						<Suspense fallback={<div>...</div>}>
+							<WeatherLottie descriptionCode={descriptionCode} moment='day' />
+						</Suspense>
 					</div>
 				</div>
 			</div>
