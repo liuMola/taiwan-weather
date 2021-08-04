@@ -13,10 +13,10 @@ export default function Loading() {
 				exit={{ opacity: 0 }}
 			>
 				<div className='flex flex-col justify-center items-center -translate-y-3'>
-					<div className='mb-1'>
+					<div className='mb-1 translate-x-3'>
 						<Lottie animationData={logo} loop={false} />
 					</div>
-					<div className='-translate-x-3'>
+					<div className='-translate-x-1'>
 						<TaiwanWeather className='w-28 h-8' />
 					</div>
 				</div>

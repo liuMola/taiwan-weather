@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Lottie from 'lottie-react';
-
-import settingDarkData from '../lottie/setting-for-dark.json';
+import loadable from '@loadable/component';
 import { findLocation } from '../utils/helper';
 import useStore from '../store/store';
+
+const LottieFile = loadable(() => import('./LottieFile'), {
+	fallback: <div>...</div>,
+});
 
 const settingClick = () => {
 	const main = document.getElementById('main');
@@ -24,7 +26,7 @@ export default function Header() {
 					</div>
 					<Link to='/setting'>
 						<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer' onClick={settingClick}>
-							<Lottie className='w-6/12' animationData={settingDarkData} />
+							<LottieFile styleName={'w-6/12'} data={'settingIcon'} />
 						</div>
 					</Link>
 				</div>

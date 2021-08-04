@@ -1,13 +1,12 @@
 import React from 'react';
 import dayjs from 'dayjs';
-//components
-//store
+import loadable from '@loadable/component';
 import useStore from '../store/store';
-//data fetching
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
-//Lottie
-import Lottie from 'lottie-react';
-import refreshDarkData from '../lottie/refresh-for-dark.json';
+
+const LottieFile = loadable(() => import(/*webpackChunkName: "Footer" */ /*webpackMode: "lazy" */ './LottieFile'), {
+	fallback: <div>...</div>,
+});
 
 export default function Footer() {
 	const time = useStore((state) => state.weatherData.observationTime);
@@ -48,7 +47,7 @@ export default function Footer() {
 					</span>
 				</div>
 				<div className='white-glass flex items-center justify-center w-8 h-8 rounded-lg hover:cursor-pointer'>
-					<Lottie className='w-6/12' animationData={refreshDarkData} onClick={fetch} />
+					<LottieFile styleName={'w-6/12'} data={'refreshIcon'} onClick={fetch} />
 				</div>
 			</div>
 		</div>

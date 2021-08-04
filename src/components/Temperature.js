@@ -1,7 +1,12 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
+import loadable from '@loadable/component';
 import DescriptionCode from './DescriptionCode';
-//store
+import { findWeather } from '../utils/helper';
 import useStore from '../store/store';
+
+const LottieFile = loadable(() => import('./LottieFile'), {
+	fallback: <div>...</div>,
+});
 
 export default function Temperature() {
 	const descriptionCode = useStore((state) => state.weatherData.weatherDesCode);
@@ -9,7 +14,7 @@ export default function Temperature() {
 	const unit = useStore((state) => state.unit);
 	const lowTemp = useStore((state) => state.weatherData.dayLowTemp);
 	const highTemp = useStore((state) => state.weatherData.dayHighTemp);
-	const WeatherLottie = lazy(() => import('./WeatherLottie'));
+	const data = findWeather(descriptionCode, 'day');
 
 	return (
 		<>
@@ -32,9 +37,7 @@ export default function Temperature() {
 						</div>
 					</div>
 					<div className='ml-2 w-28 h-28 flex justify-center items-center'>
-						<Suspense fallback={<div>...</div>}>
-							<WeatherLottie descriptionCode={descriptionCode} moment='day' />
-						</Suspense>
+						<LottieFile data={data} />
 					</div>
 				</div>
 			</div>

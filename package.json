@@ -22,7 +22,6 @@
 		"react-lottie": "^1.2.3",
 		"react-router-dom": "^5.2.0",
 		"react-scripts": "4.0.3",
-		"source-map-explorer": "^2.5.2",
 		"web-vitals": "^1.1.2",
 		"zustand": "^3.5.4"
 	},
@@ -55,6 +54,7 @@
 		"@welldone-software/why-did-you-render": "^6.2.0",
 		"autoprefixer": "^9.8.6",
 		"postcss": "^8.3.5",
-		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4"
+		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
+		"webpack-bundle-analyzer": "^4.4.2"
 	}
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 //lottie
 import Lottie from 'lottie-react';
-import windDarkData from '../lottie/wind-for-dark.json';
-import rainDarkData from '../lottie/rain-for-dark.json';
-import humdDarkData from '../lottie/humd-for-dark.json';
+import windIcon from '../lottie/wind.json';
+import rainIcon from '../lottie/pop.json';
+import humdIcon from '../lottie/humidity.json';
 //store
 import useStore from '../store/store';
 
@@ -18,7 +18,7 @@ export default function WeatherInfo() {
 		<div className='relative w-full px-2'>
 			<div className='relatvie w-full flex items-center justify-around'>
 				<div className='flex flex-col justify-center items-center font-light'>
-					<Lottie className='w-6' animationData={windDarkData} />
+					<Lottie className='w-6' animationData={windIcon} />
 					<div className='text-[16px] mt-[3px]'>
 						<span>{Math.round(windSpeed)}</span>
 						<span className='text-[11px]'>&nbsp;m/s</span>
@@ -26,7 +26,7 @@ export default function WeatherInfo() {
 					<div className='text-[9.5px] opacity-80'>Wind velocity</div>
 				</div>
 				<div className='flex flex-col justify-center items-center font-light'>
-					<Lottie className='w-6' animationData={rainDarkData} />
+					<Lottie className='w-6' animationData={rainIcon} />
 					<div className='text-[16px] mt-[3px] translate-x-[2px]'>
 						<span>{pop}</span>
 						<span className='text-[11px]'>&nbsp;%</span>
@@ -34,7 +34,7 @@ export default function WeatherInfo() {
 					<div className='text-[9.5px] opacity-80'>Rain Chance</div>
 				</div>
 				<div className='flex flex-col justify-center items-center font-light'>
-					<Lottie className='w-6 -translate-x-px' animationData={humdDarkData} />
+					<Lottie className='w-6 -translate-x-px' animationData={humdIcon} />
 					<div className='text-[16px] mt-[3px] translate-x-[2px]'>
 						<span>{calcHumd(humd)}</span>
 						<span className='text-[11px]'>&nbsp;%</span>

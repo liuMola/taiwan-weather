@@ -33,7 +33,7 @@
 			"sizes": "512x512"
 		}
 	],
-	"start_url": ".",
+	"start_url": "https://taiwan-weather.netlify.app/",
 	"display": "standalone",
 	"orientation": "portrait-primary",
 	"theme_color": "#7B7D83",

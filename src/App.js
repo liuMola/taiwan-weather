@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import loadable from '@loadable/component';
 import { AnimatePresence } from 'framer-motion';
 //components
-// import MainBoard from './components/MainBoard';
 import Setting from './components/Setting';
 import Loading from './components/Loading';
 
@@ -20,7 +19,7 @@ function App() {
 
 	return (
 		<>
-			<AnimatePresence>{pageLoading && <Loading />}</AnimatePresence>
+			{/* <AnimatePresence>{pageLoading && <Loading />}</AnimatePresence> */}
 			<div className='bg-background-img bg-cover h-full flex items-center justify-center text-dark font-roboto overscroll-none overflow-hidden'>
 				<Router>
 					<Switch>
