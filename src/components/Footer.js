@@ -4,7 +4,7 @@ import loadable from '@loadable/component';
 import useStore from '../store/store';
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
 
-const LottieFile = loadable(() => import(/*webpackChunkName: "Footer" */ /*webpackMode: "lazy" */ './LottieFile'), {
+const LottieFile = loadable(() => import('./LottieFile'), {
 	fallback: <div>...</div>,
 });
 

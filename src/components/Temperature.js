@@ -4,7 +4,7 @@ import DescriptionCode from './DescriptionCode';
 import { findWeather } from '../utils/helper';
 import useStore from '../store/store';
 
-const LottieFile = loadable(() => import('./LottieFile'), {
+const LottieFile = loadable(() => import(/*webpackChunkName: "Temp" */ /*webpackMode: "lazy" */ './LottieFile'), {
 	fallback: <div>...</div>,
 });
 

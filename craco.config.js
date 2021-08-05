@@ -1,4 +1,7 @@
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WebpackBar = require('webpackbar');
+
+// const webpackConfig = require('./webpack.config');
 
 // craco.config.js
 module.exports = {
@@ -32,13 +35,56 @@ module.exports = {
 			return babelLoaderOptions;
 		},
 	},
-	// if you want to track react-redux selectors
 	webpack: {
 		alias: {
 			'react-redux': process.env.NODE_ENV === 'development' ? 'react-redux/lib' : 'react-redux',
 		},
-		// plugins: {
-		// 	add: [new BundleAnalyzerPlugin()],
+		configure: {
+			plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin()],
+			entry: './src/App.js',
+			output: {},
+			optimization: {
+				splitChunks: {
+					cacheGroups: {
+						commons: {
+							chunks: 'initial',
+							minChunks: 2,
+							maxInitialRequests: 5,
+							minSize: 0,
+						},
+						lottie: {
+							test: /lottie-web/,
+							chunks: 'initial',
+							name: 'lottie',
+							priority: 9,
+							enforce: true,
+						},
+					},
+				},
+			},
+		},
+		// configure: (webpackConfig, { env, paths }) => {
+		// 	return webpackConfig;
+		// },
+		// plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin(), ...when(isBuildAnalyzer, () => [new BundleAnalyzerPlugin()], [])],
+		// optimization: {
+		// 	splitChunks: {
+		// 		cacheGroups: {
+		// 			commons: {
+		// 				chunks: 'initial',
+		// 				minChunks: 2,
+		// 				maxInitialRequests: 5,
+		// 				minSize: 0,
+		// 			},
+		// 			vendor: {
+		// 				test: /node_modules/,
+		// 				chunks: 'initial',
+		// 				name: 'vendor',
+		// 				priority: 10,
+		// 				enforce: true,
+		// 			},
+		// 		},
+		// 	},
 		// },
 	},
 };

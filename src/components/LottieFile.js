@@ -1,5 +1,6 @@
 import React from 'react';
 import Lottie from 'lottie-react';
+
 //lottie file
 import clear from '../lottie/day-clear.json';
 import clearFog from '../lottie/day-clear-fog.json';
