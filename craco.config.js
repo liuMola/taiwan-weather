@@ -1,5 +1,6 @@
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const WebpackBar = require('webpackbar');
+const TerserPlugin = require('terser-webpack-plugin');
 // craco.config.js
 module.exports = {
 	style: {
@@ -41,6 +42,18 @@ module.exports = {
 			// entry: './src/App.js',
 			output: {},
 			optimization: {
+				minimize: true,
+				//terse comment
+				minimizer: [
+					new TerserPlugin({
+						terserOptions: {
+							format: {
+								comments: false,
+							},
+						},
+						extractComments: false,
+					}),
+				],
 				splitChunks: {
 					cacheGroups: {
 						commons: {

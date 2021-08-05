@@ -10,7 +10,7 @@ export default function DayForcestCard({ date, descriptionCode, temp, moment }) 
 	const data = findWeather(descriptionCode, moment);
 
 	return (
-		<div className='white-glass py-4 px- rounded-xl'>
+		<div className='white-glass py-4 px-[9px] rounded-xl'>
 			<div className='flex flex-col items-center font-light text-[12px] text-dark'>
 				<div>{date}</div>
 				<div className='mt-2 mb-3'>
