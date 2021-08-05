@@ -1,8 +1,5 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const WebpackBar = require('webpackbar');
-
-// const webpackConfig = require('./webpack.config');
-
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const WebpackBar = require('webpackbar');
 // craco.config.js
 module.exports = {
 	style: {
@@ -40,8 +37,8 @@ module.exports = {
 			'react-redux': process.env.NODE_ENV === 'development' ? 'react-redux/lib' : 'react-redux',
 		},
 		configure: {
-			plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin()],
-			entry: './src/App.js',
+			// plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin()],
+			// entry: './src/App.js',
 			output: {},
 			optimization: {
 				splitChunks: {
@@ -63,28 +60,5 @@ module.exports = {
 				},
 			},
 		},
-		// configure: (webpackConfig, { env, paths }) => {
-		// 	return webpackConfig;
-		// },
-		// plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin(), ...when(isBuildAnalyzer, () => [new BundleAnalyzerPlugin()], [])],
-		// optimization: {
-		// 	splitChunks: {
-		// 		cacheGroups: {
-		// 			commons: {
-		// 				chunks: 'initial',
-		// 				minChunks: 2,
-		// 				maxInitialRequests: 5,
-		// 				minSize: 0,
-		// 			},
-		// 			vendor: {
-		// 				test: /node_modules/,
-		// 				chunks: 'initial',
-		// 				name: 'vendor',
-		// 				priority: 10,
-		// 				enforce: true,
-		// 			},
-		// 		},
-		// 	},
-		// },
 	},
 };
