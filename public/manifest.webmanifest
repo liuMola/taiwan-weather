@@ -4,36 +4,42 @@
 	"icons": [
 		{
 			"src": "favicon.ico",
-			"sizes": "64x64 32x32 24x24 16x16",
+			"sizes": "32x32",
 			"type": "image/x-icon"
 		},
 		{
 			"src": "icon@48.png",
 			"type": "image/png",
-			"sizes": "48x48"
+			"sizes": "48x48",
+			"purpose": "any"
 		},
 		{
 			"src": "icon@96.png",
 			"type": "image/png",
-			"sizes": "96x96"
+			"sizes": "96x96",
+			"purpose": "any"
 		},
 		{
 			"src": "icon@144.png",
 			"type": "image/png",
-			"sizes": "144x144"
+			"sizes": "144x144",
+			"purpose": "any"
 		},
 		{
 			"src": "icon@192.png",
 			"type": "image/png",
-			"sizes": "192x192"
+			"sizes": "192x192",
+			"purpose": "any maskable"
 		},
 		{
 			"src": "icon@512.png",
 			"type": "image/png",
-			"sizes": "512x512"
+			"sizes": "512x512",
+			"purpose": "any maskable"
 		}
 	],
-	"start_url": "https://taiwan-weather.netlify.app/",
+	"start_url": "/",
+	"scope": "/",
 	"display": "standalone",
 	"orientation": "portrait-primary",
 	"theme_color": "#7B7D83",
