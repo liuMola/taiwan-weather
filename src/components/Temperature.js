@@ -3,9 +3,10 @@ import loadable from '@loadable/component';
 import DescriptionCode from './DescriptionCode';
 import { findWeather } from '../utils/helper';
 import useStore from '../store/store';
+import LoadingAnimate from './LoadingAnimate';
 
 const LottieFile = loadable(() => import(/*webpackChunkName: "Temp" */ /*webpackMode: "lazy" */ './LottieFile'), {
-	fallback: <div>...</div>,
+	fallback: <LoadingAnimate />,
 });
 
 export default function Temperature() {

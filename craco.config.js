@@ -39,11 +39,9 @@ module.exports = {
 		},
 		configure: {
 			// plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin()],
-			// entry: './src/App.js',
 			output: {},
 			optimization: {
 				minimize: true,
-				//terse comment
 				minimizer: [
 					new TerserPlugin({
 						terserOptions: {

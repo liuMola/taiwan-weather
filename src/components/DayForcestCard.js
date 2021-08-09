@@ -1,9 +1,10 @@
 import React from 'react';
 import { findWeather } from '../utils/helper';
 import loadable from '@loadable/component';
+import LoadingAnimate from './LoadingAnimate';
 
 const LottieFile = loadable(() => import('./LottieFile'), {
-	fallback: <div>...</div>,
+	fallback: <LoadingAnimate />,
 });
 
 export default function DayForcestCard({ date, descriptionCode, temp, moment }) {

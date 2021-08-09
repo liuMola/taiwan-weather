@@ -10,6 +10,7 @@ import useStore from '../store/store';
 //location data
 import { availableLocations, findLocation } from '../utils/helper';
 import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
+import useWeatherApi from '../hooks/useWeatherAPI';
 
 export default function Setting() {
 	const [unit, setUnit] = useState('c');
@@ -33,6 +34,7 @@ export default function Setting() {
 			},
 		},
 	};
+
 	//toggle unit style
 	const toggleUnitC = () => {
 		const c = document.getElementById('celsius');
@@ -96,7 +98,9 @@ export default function Setting() {
 				]);
 				return data;
 			};
-			fetchData().then((data) => setWeatherData(data));
+			fetchData().then((data) => {
+				setWeatherData(data);
+			});
 			locationRef.current = location.cityName;
 			settingClick();
 			return;
@@ -104,6 +108,51 @@ export default function Setting() {
 		fetchWithSelectedLocation();
 		// settingClick();
 	};
+	// const applyButton = () => {
+	// 	useWeatherApi(currentLocation ? `${localName}, ${GPSLocation}` : `${locationName}, ${cityName}`)
+	// 	const applyChange = () => {
+	// 		setStoreUnit(unit);
+	// 	};
+	// 	applyChange();
+	// 	//use current GPS location to fetch
+	// 	if (currentLocation) {
+	// 		let localName = findLocation(GPSLocation).locationName;
+	// 		setStoreLocation(findLocation(GPSLocation));
+	// 		const fetchData = async () => {
+	// 			const data = await Promise.all([
+	// 				fetchCurrentWeather(localName),
+	// 				fetchWeatherForecast(GPSLocation),
+	// 				fetchWeekForecast(GPSLocation),
+	// 				fetchSunriseNset(GPSLocation),
+	// 			]);
+	// 			return data;
+	// 		};
+	// 		fetchData().then((data) => setWeatherData(data));
+	// 		setLocation(findLocation(GPSLocation));
+	// 		settingClick();
+	// 		return;
+	// 	}
+	// 	//use user choose location to fetch
+	// 	const fetchWithSelectedLocation = () => {
+	// 		console.log('this one is still fire');
+	// 		setStoreLocation(location);
+	// 		const fetchData = async () => {
+	// 			const data = await Promise.all([
+	// 				fetchCurrentWeather(locationName),
+	// 				fetchWeatherForecast(cityName),
+	// 				fetchWeekForecast(cityName),
+	// 				fetchSunriseNset(cityName),
+	// 			]);
+	// 			return data;
+	// 		};
+	// 		fetchData().then((data) => setWeatherData(data));
+	// 		locationRef.current = location.cityName;
+	// 		settingClick();
+	// 		return;
+	// 	};
+	// 	fetchWithSelectedLocation();
+	// 	// settingClick();
+	// };
 
 	return (
 		<LazyMotion features={domAnimation}>

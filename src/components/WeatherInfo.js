@@ -1,9 +1,10 @@
 import React from 'react';
 import loadable from '@loadable/component';
 import useStore from '../store/store';
+import LoadingAnimate from './LoadingAnimate';
 
 const LottieFile = loadable(() => import('./LottieFile'), {
-	fallback: <div>...</div>,
+	fallback: <LoadingAnimate />,
 });
 
 export default function WeatherInfo() {

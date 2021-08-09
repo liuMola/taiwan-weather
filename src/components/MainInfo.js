@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Temperature from './Temperature';
 import WeatherInfo from './WeatherInfo';
 

@@ -41,7 +41,7 @@ export default function FiveDayForecast() {
 			<div className='text-base font-normal mb-5 pl-3'>
 				<span>Week forecast</span>
 			</div>
-			<div className='flex justify-between'>
+			<div className='flex justify-between px-1'>
 				<DayForcestCard date={date[0]} descriptionCode={descriptionCode[0]} temp={temp[0]} moment={moment} />
 				<DayForcestCard date={date[1]} descriptionCode={descriptionCode[1]} temp={temp[1]} moment={moment} />
 				<DayForcestCard date={date[2]} descriptionCode={descriptionCode[2]} temp={temp[2]} moment={moment} />

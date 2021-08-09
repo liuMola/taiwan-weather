@@ -15,7 +15,7 @@ export default function MainBoard() {
 	useWeatherApi(locationName, cityName);
 
 	return (
-		<div
+		<main
 			id='main'
 			className='weather-card relative min-w-[355px] white-glass pt-3 pb-5 px-4 rounded-3xl backdrop-blur transition duration-500 ease-in-out'
 		>
@@ -24,6 +24,6 @@ export default function MainBoard() {
 			<WeekForecast />
 			<div className='w-full bg-bright opacity-30 h-px mt-6 mb-4'></div>
 			<Footer />
-		</div>
+		</main>
 	);
 }
