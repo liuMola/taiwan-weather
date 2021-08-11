@@ -1,29 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { LazyMotion, m, domAnimation } from 'framer-motion';
 import { Link } from 'react-router-dom';
 //components
 import DropdownMenu from './DropdownMenu';
 import CurrentLocation from './CurrentLocation';
+import SettingButton from './SettingButton';
 import { ReactComponent as Loading } from '../images/loading.svg';
-//store
 import useStore from '../store/store';
-//location data
-import { availableLocations, findLocation } from '../utils/helper';
-import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
-import useWeatherApi from '../hooks/useWeatherAPI';
+import { availableLocations } from '../utils/helper';
 
 export default function Setting() {
 	const [unit, setUnit] = useState('c');
 	const [location, setLocation] = useState(availableLocations[1]);
 	const [currentLocation, setCurrentLocation] = useState(false);
-	const setStoreUnit = useStore((state) => state.setUnit);
-	const setStoreLocation = useStore((state) => state.setLocation);
-	const setWeatherData = useStore((state) => state.setWeatherData);
-	const cityName = useStore((state) => state.location.cityName);
-	const locationName = useStore((state) => state.location.locationName);
 	const GPSLocation = useStore((state) => state.GPSLocation);
-	const isLoading = useStore((state) => state.isLoading);
-	const locationRef = useRef(cityName);
 	const animateVariants = {
 		initial: { y: 750 },
 		animate: {
@@ -63,96 +53,6 @@ export default function Setting() {
 		const main = document.getElementById('main');
 		main.classList.toggle('settingOpen');
 	};
-	const applyButton = () => {
-		const applyChange = () => {
-			setStoreUnit(unit);
-		};
-		applyChange();
-		//use current GPS location to fetch
-		if (currentLocation) {
-			let localName = findLocation(GPSLocation).locationName;
-			setStoreLocation(findLocation(GPSLocation));
-			const fetchData = async () => {
-				const data = await Promise.all([
-					fetchCurrentWeather(localName),
-					fetchWeatherForecast(GPSLocation),
-					fetchWeekForecast(GPSLocation),
-					fetchSunriseNset(GPSLocation),
-				]);
-				return data;
-			};
-			fetchData().then((data) => setWeatherData(data));
-			setLocation(findLocation(GPSLocation));
-			settingClick();
-			return;
-		}
-		//use user choose location to fetch
-		const fetchWithSelectedLocation = () => {
-			setStoreLocation(location);
-			const fetchData = async () => {
-				const data = await Promise.all([
-					fetchCurrentWeather(locationName),
-					fetchWeatherForecast(cityName),
-					fetchWeekForecast(cityName),
-					fetchSunriseNset(cityName),
-				]);
-				return data;
-			};
-			fetchData().then((data) => {
-				setWeatherData(data);
-			});
-			locationRef.current = location.cityName;
-			settingClick();
-			return;
-		};
-		fetchWithSelectedLocation();
-		// settingClick();
-	};
-	// const applyButton = () => {
-	// 	useWeatherApi(currentLocation ? `${localName}, ${GPSLocation}` : `${locationName}, ${cityName}`)
-	// 	const applyChange = () => {
-	// 		setStoreUnit(unit);
-	// 	};
-	// 	applyChange();
-	// 	//use current GPS location to fetch
-	// 	if (currentLocation) {
-	// 		let localName = findLocation(GPSLocation).locationName;
-	// 		setStoreLocation(findLocation(GPSLocation));
-	// 		const fetchData = async () => {
-	// 			const data = await Promise.all([
-	// 				fetchCurrentWeather(localName),
-	// 				fetchWeatherForecast(GPSLocation),
-	// 				fetchWeekForecast(GPSLocation),
-	// 				fetchSunriseNset(GPSLocation),
-	// 			]);
-	// 			return data;
-	// 		};
-	// 		fetchData().then((data) => setWeatherData(data));
-	// 		setLocation(findLocation(GPSLocation));
-	// 		settingClick();
-	// 		return;
-	// 	}
-	// 	//use user choose location to fetch
-	// 	const fetchWithSelectedLocation = () => {
-	// 		console.log('this one is still fire');
-	// 		setStoreLocation(location);
-	// 		const fetchData = async () => {
-	// 			const data = await Promise.all([
-	// 				fetchCurrentWeather(locationName),
-	// 				fetchWeatherForecast(cityName),
-	// 				fetchWeekForecast(cityName),
-	// 				fetchSunriseNset(cityName),
-	// 			]);
-	// 			return data;
-	// 		};
-	// 		fetchData().then((data) => setWeatherData(data));
-	// 		locationRef.current = location.cityName;
-	// 		settingClick();
-	// 		return;
-	// 	};
-	// 	fetchWithSelectedLocation();
-	// 	// settingClick();
-	// };
 
 	return (
 		<LazyMotion features={domAnimation}>
@@ -222,19 +122,7 @@ export default function Setting() {
 							</>
 						)}
 					</div>
-					<Link to={isLoading ? '#' : '/'}>
-						<div className='absolute bottom-2 right-0'>
-							<button
-								type='button'
-								onClick={applyButton}
-								className={`flex w-20 h-9 bg-[#59A3D1] hover:bg-[#35769e] text-bright justify-center items-center rounded-xl border-[0.5px] border-blue-200 cursor-pointer transition duration-200 ease-in-out 
-							${currentLocation && !GPSLocation ? 'opacity-30 cursor-not-allowed hover:bg-[#59A3D1]' : null}`}
-								disabled={currentLocation && !GPSLocation}
-							>
-								<span>Apply</span>
-							</button>
-						</div>
-					</Link>
+					<SettingButton currentLocation={currentLocation} location={location} unit={unit} />
 				</div>
 			</m.div>
 		</LazyMotion>

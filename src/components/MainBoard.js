@@ -1,18 +1,37 @@
-import React from 'react';
-//components
+import React, { useEffect } from 'react';
 import MainInfo from './MainInfo';
 import Header from './Header';
 import WeekForecast from './WeekForecast';
 import Footer from './Footer';
-//store
 import useStore from '../store/store';
-//custom hook for weather fetching
-import useWeatherApi from '../hooks/useWeatherAPI';
+// import useWeatherApi from '../hooks/useWeatherAPI';
+import { fetchWeatherForecast, fetchCurrentWeather, fetchWeekForecast, fetchSunriseNset } from '../apis/fetchData';
 
-export default function MainBoard() {
+const MainBoard = () => {
 	const cityName = useStore((state) => state.location.cityName);
 	const locationName = useStore((state) => state.location.locationName);
-	useWeatherApi(locationName, cityName);
+	const setWeatherData = useStore((state) => state.setWeatherData);
+	const setLoading = useStore((state) => state.setLoading);
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				setLoading(true);
+				let data = await Promise.all([
+					fetchCurrentWeather(locationName),
+					fetchWeatherForecast(cityName),
+					fetchWeekForecast(cityName),
+					fetchSunriseNset(cityName),
+				]);
+				setLoading(false);
+				return data;
+			} catch (err) {
+				console.log(`weather data fetching error: ${err}`);
+			}
+		};
+		fetchData().then((data) => {
+			setWeatherData(data);
+		});
+	});
 
 	return (
 		<main
@@ -26,4 +45,6 @@ export default function MainBoard() {
 			<Footer />
 		</main>
 	);
-}
+};
+
+export default MainBoard;

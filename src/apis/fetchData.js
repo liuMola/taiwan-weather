@@ -1,9 +1,6 @@
 import key from '../secure/keys';
 import dayjs from 'dayjs';
-
 const baseURL = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/';
-
-//forecast start and end day
 const initialDate = dayjs().format('YYYY-MM-DD');
 const initialDatePlusOne = dayjs().add(1, 'day').format('YYYY-MM-DD');
 const endDate = dayjs().add(5, 'day').format('YYYY-MM-DD');
