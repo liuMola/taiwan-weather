@@ -1,6 +1,6 @@
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 // const WebpackBar = require('webpackbar');
-// const TerserPlugin = require('terser-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 // craco.config.js
 module.exports = {
 	style: {
@@ -40,36 +40,36 @@ module.exports = {
 		configure: {
 			// plugins: [new WebpackBar({ profile: true }), new BundleAnalyzerPlugin()],
 			output: {},
-			// optimization: {
-			// 	minimize: true,
-			// 	minimizer: [
-			// 		new TerserPlugin({
-			// 			terserOptions: {
-			// 				format: {
-			// 					comments: false,
-			// 				},
-			// 			},
-			// 			extractComments: false,
-			// 		}),
-			// 	],
-			// 	splitChunks: {
-			// 		cacheGroups: {
-			// 			commons: {
-			// 				chunks: 'initial',
-			// 				minChunks: 2,
-			// 				maxInitialRequests: 5,
-			// 				minSize: 0,
-			// 			},
-			// 			lottie: {
-			// 				test: /lottie-web/,
-			// 				chunks: 'initial',
-			// 				name: 'lottie',
-			// 				priority: 9,
-			// 				enforce: true,
-			// 			},
-			// 		},
-			// 	},
-			// },
+			optimization: {
+				minimize: true,
+				minimizer: [
+					new TerserPlugin({
+						terserOptions: {
+							format: {
+								comments: false,
+							},
+						},
+						extractComments: false,
+					}),
+				],
+				splitChunks: {
+					cacheGroups: {
+						commons: {
+							chunks: 'initial',
+							minChunks: 2,
+							maxInitialRequests: 5,
+							minSize: 0,
+						},
+						lottie: {
+							test: /lottie-web/,
+							chunks: 'initial',
+							name: 'lottie',
+							priority: 9,
+							enforce: true,
+						},
+					},
+				},
+			},
 		},
 	},
 };
